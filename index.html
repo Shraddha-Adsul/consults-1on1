@@ -4,101 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Consults - Book Your Appointment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <div class="container">
             <h1>One-on-One Doctor Consults</h1>
-            <p>Connect with experienced healthcare professionals</p>
+            <p>Trusted experts brought to you by PreventiveHealth.AI</p>
         </div>
     </header>
 
-    <nav>
-        <div class="container">
-            <a href="#">Home</a>
-            <a href="#">Doctors</a>
-            <a href="#">Specialties</a>
-            <a href="#">How It Works</a>
-            <a href="#">Contact</a>
-        </div>
-    </nav>
-
     <main class="container">
+
+        <section class="how-it-works">
+            <div class="how-step how-step--left">
+                <span class="step-num">01</span>
+                <h3>Browse Doctors</h3>
+                <p>Find the right specialist for your health needs</p>
+            </div>
+            <div class="how-step how-step--mid">
+                <span class="step-num">02</span>
+                <h3>Book a Consult</h3>
+                <p>Schedule your one-on-one session in minutes</p>
+            </div>
+            <div class="how-step how-step--right">
+                <span class="step-num">03</span>
+                <h3>Simple, Transparent Pricing</h3>
+                <table class="pricing-table">
+                    <tr>
+                        <td class="pricing-duration">15 min</td>
+                        <td class="pricing-usd">$60</td>
+                        <td class="pricing-inr">Rs 2,400</td>
+                    </tr>
+                    <tr>
+                        <td class="pricing-duration">30 min</td>
+                        <td class="pricing-usd">$99</td>
+                        <td class="pricing-inr">Rs 4,000</td>
+                    </tr>
+                    <tr>
+                        <td class="pricing-duration">60 min</td>
+                        <td class="pricing-usd">$175</td>
+                        <td class="pricing-inr">Rs 7,500</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
         <section class="doctors-grid">
             <div class="doctor-card">
-                <img src="https://via.placeholder.com/150" alt="Dr. Sarah Johnson">
-                <h3>Dr. Sarah Johnson</h3>
-                <p class="specialty">Cardiologist</p>
-                <p class="experience">15 years experience</p>
-                <p class="rating">⭐ 4.9 (120 reviews)</p>
-                <button class="consult-btn" onclick="bookConsult('Dr. Sarah Johnson')">Book Consult</button>
-                <button class="profile-btn" onclick="viewProfile('sarah-johnson')">View Profile</button>
+                <div class="card-photo">
+                    <img src="dr-meetali.png" alt="Dr. Meetali Bidaye">
+                </div>
+                <div class="card-info">
+                    <h3>Dr. Meetali Bidaye</h3>
+                    <p class="specialty">Nephrologist</p>
+                    <p class="experience">13 years experience</p>
+                    <div class="card-actions">
+                        <button class="consult-btn" onclick="bookConsult('Dr. Meetali Bidaye')">Book Consult</button>
+                        <button class="profile-btn" onclick="viewProfile('meetali-bidaye')">View Profile</button>
+                    </div>
+                </div>
             </div>
 
             <div class="doctor-card">
-                <img src="https://via.placeholder.com/150" alt="Dr. Michael Chen">
-                <h3>Dr. Michael Chen</h3>
-                <p class="specialty">General Practitioner</p>
-                <p class="experience">10 years experience</p>
-                <p class="rating">⭐ 4.8 (95 reviews)</p>
-                <button class="consult-btn" onclick="bookConsult('Dr. Michael Chen')">Book Consult</button>
-                <button class="profile-btn" onclick="viewProfile('michael-chen')">View Profile</button>
+                <div class="card-photo">
+                    <img src="https://placehold.co/300x400/d8d8d8/aaaaaa?text=+" alt="Doctor placeholder">
+                </div>
+                <div class="card-info">
+                    <h3>Lorem Ipsum</h3>
+                    <p class="specialty">Speciality</p>
+                    <p class="experience">Coming soon</p>
+                    <div class="card-actions">
+                        <button class="consult-btn" onclick="bookConsult('Lorem Ipsum')">Book Consult</button>
+                        <button class="profile-btn" onclick="viewProfile('placeholder-2')">View Profile</button>
+                    </div>
+                </div>
             </div>
 
             <div class="doctor-card">
-                <img src="https://via.placeholder.com/150" alt="Dr. Emily Rodriguez">
-                <h3>Dr. Emily Rodriguez</h3>
-                <p class="specialty">Pediatrician</p>
-                <p class="experience">12 years experience</p>
-                <p class="rating">⭐ 5.0 (150 reviews)</p>
-                <button class="consult-btn" onclick="bookConsult('Dr. Emily Rodriguez')">Book Consult</button>
-                <button class="profile-btn" onclick="viewProfile('emily-rodriguez')">View Profile</button>
-            </div>
-
-            <div class="doctor-card">
-                <img src="https://via.placeholder.com/150" alt="Dr. James Wilson">
-                <h3>Dr. James Wilson</h3>
-                <p class="specialty">Dermatologist</p>
-                <p class="experience">8 years experience</p>
-                <p class="rating">⭐ 4.7 (80 reviews)</p>
-                <button class="consult-btn" onclick="bookConsult('Dr. James Wilson')">Book Consult</button>
-                <button class="profile-btn" onclick="viewProfile('james-wilson')">View Profile</button>
-            </div>
-
-            <div class="doctor-card">
-                <img src="https://via.placeholder.com/150" alt="Dr. Priya Patel">
-                <h3>Dr. Priya Patel</h3>
-                <p class="specialty">Psychiatrist</p>
-                <p class="experience">18 years experience</p>
-                <p class="rating">⭐ 4.9 (200 reviews)</p>
-                <button class="consult-btn" onclick="bookConsult('Dr. Priya Patel')">Book Consult</button>
-                <button class="profile-btn" onclick="viewProfile('priya-patel')">View Profile</button>
-            </div>
-
-            <div class="doctor-card">
-                <img src="https://via.placeholder.com/150" alt="Dr. Robert Kim">
-                <h3>Dr. Robert Kim</h3>
-                <p class="specialty">Orthopedic Surgeon</p>
-                <p class="experience">20 years experience</p>
-                <p class="rating">⭐ 4.8 (110 reviews)</p>
-                <button class="consult-btn" onclick="bookConsult('Dr. Robert Kim')">Book Consult</button>
-                <button class="profile-btn" onclick="viewProfile('robert-kim')">View Profile</button>
+                <div class="card-photo">
+                    <img src="https://placehold.co/300x400/d8d8d8/aaaaaa?text=+" alt="Doctor placeholder">
+                </div>
+                <div class="card-info">
+                    <h3>Lorem Ipsum</h3>
+                    <p class="specialty">Speciality</p>
+                    <p class="experience">Coming soon</p>
+                    <div class="card-actions">
+                        <button class="consult-btn" onclick="bookConsult('Lorem Ipsum')">Book Consult</button>
+                        <button class="profile-btn" onclick="viewProfile('placeholder-3')">View Profile</button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Modal for Doctor Profile -->
-    <div id="profileModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="profileDetails"></div>
-        </div>
+    <!-- Profile Drawer -->
+    <div id="drawerOverlay" class="drawer-overlay" onclick="closeDrawer()"></div>
+    <div id="profileDrawer" class="drawer">
+        <button class="drawer-close" onclick="closeDrawer()">&times;</button>
+        <div id="profileDetails"></div>
     </div>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Doctor Consults. All rights reserved.</p>
+            <p>&copy; 2026 © PreventiveHealth.AI | All rights reserved.</p>
         </div>
     </footer>
 

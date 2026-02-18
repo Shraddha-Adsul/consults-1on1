@@ -1,58 +1,31 @@
 // Doctor profiles data
 const doctorProfiles = {
-    'sarah-johnson': {
-        name: 'Dr. Sarah Johnson',
-        specialty: 'Cardiologist',
-        experience: '15 years',
-        education: 'MD from Harvard Medical School',
-        about: 'Dr. Johnson specializes in preventive cardiology and has extensive experience treating heart disease. She is passionate about helping patients maintain heart health through lifestyle changes and evidence-based medicine.',
-        languages: 'English, Spanish',
-        availability: 'Mon-Fri, 9 AM - 5 PM'
+    'meetali-bidaye': {
+        name: 'Dr. Meetali Bidaye',
+        specialty: 'Nephrologist',
+        experience: '13 years',
+        education: 'MBBS, MRCP (London), MRCP (Nephrology)',
+        about: 'Dr. Meetali Bidaye is a UK-trained Nephrologist with over 13 years of experience as a Consultant Nephrologist in Pune. After completing her specialist training in Nephrology in England, she returned to India to bring global best practices to local care. She is the founder of Nivarak (nivarak.com), a preventive eldercare startup focused on proactive, coordinated health support for seniors, and co-founder of the I-SHARE Foundation, an NGO dedicated to improving access to medical care for underserved communities. Outside of medicine, Dr. Bidaye is an avid tennis player and a passionate dog lover.',
+        languages: 'English, Marathi, Hindi',
+        availability: 'By appointment'
     },
-    'michael-chen': {
-        name: 'Dr. Michael Chen',
-        specialty: 'General Practitioner',
-        experience: '10 years',
-        education: 'MD from Stanford University',
-        about: 'Dr. Chen provides comprehensive primary care for patients of all ages. He focuses on building long-term relationships with his patients and emphasizing preventive care.',
-        languages: 'English, Mandarin, Cantonese',
-        availability: 'Mon-Sat, 8 AM - 6 PM'
+    'placeholder-2': {
+        name: 'Lorem Ipsum',
+        specialty: 'Speciality',
+        experience: 'Coming soon',
+        education: 'Lorem ipsum dolor sit amet',
+        about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+        languages: 'Lorem, Ipsum',
+        availability: 'Coming soon'
     },
-    'emily-rodriguez': {
-        name: 'Dr. Emily Rodriguez',
-        specialty: 'Pediatrician',
-        experience: '12 years',
-        education: 'MD from Johns Hopkins University',
-        about: 'Dr. Rodriguez is dedicated to providing compassionate care for children from infancy through adolescence. She specializes in developmental pediatrics and childhood nutrition.',
-        languages: 'English, Spanish, Portuguese',
-        availability: 'Mon-Fri, 8 AM - 4 PM'
-    },
-    'james-wilson': {
-        name: 'Dr. James Wilson',
-        specialty: 'Dermatologist',
-        experience: '8 years',
-        education: 'MD from Yale School of Medicine',
-        about: 'Dr. Wilson specializes in both medical and cosmetic dermatology. He has expertise in treating skin conditions ranging from acne to skin cancer.',
-        languages: 'English, French',
-        availability: 'Tue-Sat, 10 AM - 6 PM'
-    },
-    'priya-patel': {
-        name: 'Dr. Priya Patel',
-        specialty: 'Psychiatrist',
-        experience: '18 years',
-        education: 'MD from Columbia University',
-        about: 'Dr. Patel specializes in treating anxiety, depression, and mood disorders. She uses a holistic approach combining therapy and medication management.',
-        languages: 'English, Hindi, Gujarati',
-        availability: 'Mon-Thu, 9 AM - 7 PM'
-    },
-    'robert-kim': {
-        name: 'Dr. Robert Kim',
-        specialty: 'Orthopedic Surgeon',
-        experience: '20 years',
-        education: 'MD from University of Pennsylvania',
-        about: 'Dr. Kim is an expert in joint replacement and sports medicine. He has performed over 2,000 successful surgeries and focuses on minimally invasive techniques.',
-        languages: 'English, Korean',
-        availability: 'Mon-Fri, 7 AM - 3 PM'
+    'placeholder-3': {
+        name: 'Lorem Ipsum',
+        specialty: 'Speciality',
+        experience: 'Coming soon',
+        education: 'Lorem ipsum dolor sit amet',
+        about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+        languages: 'Lorem, Ipsum',
+        availability: 'Coming soon'
     }
 };
 
@@ -63,54 +36,47 @@ function bookConsult(doctorName) {
     console.log(`Initiating booking for ${doctorName}`);
 }
 
-// View doctor profile
+// View doctor profile — opens right-hand drawer
 function viewProfile(doctorId) {
     const doctor = doctorProfiles[doctorId];
-    if (!doctor) {
-        alert('Doctor profile not found.');
-        return;
-    }
+    if (!doctor) return;
 
     const profileHTML = `
         <h2>${doctor.name}</h2>
-        <p class="profile-specialty">${doctor.specialty}</p>
-        <hr style="margin: 20px 0; border: none; border-top: 1px solid #ccc;">
-        
-        <p><strong>Experience:</strong> ${doctor.experience}</p>
-        <p><strong>Education:</strong> ${doctor.education}</p>
-        <p><strong>Languages:</strong> ${doctor.languages}</p>
-        <p><strong>Availability:</strong> ${doctor.availability}</p>
-        
-        <hr style="margin: 20px 0; border: none; border-top: 1px solid #ccc;">
-        
-        <p><strong>About:</strong></p>
-        <p>${doctor.about}</p>
-        
-        <button class="consult-btn" onclick="bookConsult('${doctor.name}'); closeModal();" style="margin-top: 20px;">
+        <span class="profile-specialty">${doctor.specialty}</span>
+
+        <div class="profile-meta">
+            <p><strong>Experience:</strong> ${doctor.experience}</p>
+            <p><strong>Credentials:</strong> ${doctor.education}</p>
+            <p><strong>Languages:</strong> ${doctor.languages}</p>
+            <p><strong>Availability:</strong> ${doctor.availability}</p>
+        </div>
+
+        <div class="profile-about">
+            <p>${doctor.about}</p>
+        </div>
+
+        <button class="consult-btn" onclick="bookConsult('${doctor.name}'); closeDrawer();" style="width:100%;">
             Book Consultation
         </button>
     `;
 
     document.getElementById('profileDetails').innerHTML = profileHTML;
-    document.getElementById('profileModal').style.display = 'block';
+    document.getElementById('profileDrawer').classList.add('open');
+    document.getElementById('drawerOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
 }
 
-// Close modal
-function closeModal() {
-    document.getElementById('profileModal').style.display = 'none';
+// Close drawer
+function closeDrawer() {
+    document.getElementById('profileDrawer').classList.remove('open');
+    document.getElementById('drawerOverlay').classList.remove('open');
+    document.body.style.overflow = '';
 }
 
-// Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById('profileModal');
-    if (event.target === modal) {
-        closeModal();
-    }
-}
-
-// Close modal with Escape key
+// Close drawer with Escape key
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
-        closeModal();
+        closeDrawer();
     }
 });
