@@ -1,0 +1,297 @@
+:root {
+    --nile-blue: #124356;
+    --mineral-green: #144741;
+    --white: #FCFCFC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background-color: #ebebeb;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: var(--nile-blue);
+    color: var(--white);
+    padding: 60px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.85;
+}
+
+/* Nav */
+nav {
+    background: var(--mineral-green);
+    padding: 0 20px;
+}
+
+nav .container {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 16px 20px;
+    display: inline-block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+nav a:hover {
+    border-bottom: 3px solid var(--white);
+    background: rgba(255,255,255,0.05);
+}
+
+/* Main Content */
+main {
+    padding: 40px 0;
+    flex: 1;
+}
+
+/* Doctor Grid */
+.doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.doctor-card {
+    background: var(--white);
+    border-radius: 0;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #d0d0d0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.doctor-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.doctor-card img {
+    width: 130px;
+    height: 130px;
+    border-radius: 0;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid var(--nile-blue);
+}
+
+.doctor-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+    color: var(--nile-blue);
+}
+
+.specialty {
+    color: var(--mineral-green);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.experience {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+.rating {
+    color: #b8860b;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 5px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.consult-btn {
+    background: var(--mineral-green);
+    color: var(--white);
+}
+
+.consult-btn:hover {
+    background: #0e3330;
+}
+
+.profile-btn {
+    background: var(--white);
+    color: var(--nile-blue);
+    border: 2px solid var(--nile-blue);
+}
+
+.profile-btn:hover {
+    background: var(--nile-blue);
+    color: var(--white);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: 5% auto;
+    padding: 35px;
+    border-radius: 0;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-top: 4px solid var(--nile-blue);
+}
+
+.close {
+    color: #999;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 20px;
+    transition: color 0.2s;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+}
+
+#profileDetails h2 {
+    color: var(--nile-blue);
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+
+#profileDetails p {
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+
+#profileDetails .profile-specialty {
+    color: var(--mineral-green);
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+/* Footer */
+footer {
+    background: var(--nile-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+    .doctors-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    nav .container {
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+    }
+
+    .doctors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .doctor-card {
+        padding: 18px;
+    }
+
+    button {
+        padding: 9px 16px;
+        font-size: 0.9rem;
+        width: 100%;
+        display: block;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .doctors-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        padding: 40px 0;
+    }
+
+    .modal-content {
+        margin: 10% auto;
+        padding: 20px;
+    }
+}
