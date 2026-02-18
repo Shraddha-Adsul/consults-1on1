@@ -397,18 +397,3 @@ footer {
         display: block;
     }
 }
-
-@media (max-width: 480px) {
-    header {
-        padding: 20px 0;
-    }
-
-    header h1 {
-        font-size: 1.6rem;
-    }
-
-    .card-actions button {
-        width: 100%;
-        display: block;
-    }
-}
