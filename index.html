@@ -3,117 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Consults - Book Your Appointment</title>
+    <title>One-on-One Doctor Consults | The Longevity Circle</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>One-on-One Doctor Consults</h1>
-            <p>Trusted experts brought to you by PreventiveHealth.AI</p>
+        <div class="container header-inner">
+            <div class="header-text">
+                <h1>One-on-One Doctor Consults</h1>
+                <p>Private consultations with vetted physicians, brought to you by The Longevity Circle.</p>
+            </div>
+            <div class="header-logo">
+                <img src="phai-logo.png" alt="PreventiveHealth.AI Logo">
+            </div>
         </div>
     </header>
 
     <main class="container">
 
-        <section class="how-it-works">
-            <div class="how-step how-step--left">
-                <span class="step-num">01</span>
-                <h3>Browse Doctors</h3>
-                <p>Find the right specialist for your health needs</p>
+        <section class="content-boxes">
+
+            <div class="content-box">
+                <div class="box-eyebrow">
+                    <span class="box-num">01</span>
+                    <span class="box-rule"></span>
+                </div>
+                <h2>About This Offering</h2>
+                <p>Navigating health decisions is hard. A 15-minute appointment rarely leaves room for the questions that actually matter. This offering connects you with vetted physicians for private, one-on-one consultations designed to give you something the standard healthcare system rarely does: time, depth, and perspective.</p>
+                <p>Whether you're trying to make sense of a diagnosis, review your labs, explore preventive interventions, or simply want a second opinion you can trust, these consultations are designed to help you live a healthier life and advocate more confidently for yourself with your own providers.</p>
             </div>
-            <div class="how-step how-step--mid">
-                <span class="step-num">02</span>
-                <h3>Book a Consult</h3>
-                <p>Schedule your one-on-one session in minutes</p>
+
+            <div class="content-box">
+                <div class="box-eyebrow">
+                    <span class="box-num">02</span>
+                    <span class="box-rule"></span>
+                </div>
+                <h2>How We Chose Our Providers</h2>
+                <p class="box-lead">We didn't build a directory. We built a shortlist.</p>
+                <p>Every physician in this network was selected because their philosophy of care aligns with ours. They believe health is an ongoing practice, not just the absence of illness. They approach medicine with curiosity, take prevention seriously, and make time to actually listen. These are doctors we would recommend to our own families, and many of us already do.</p>
+                <a href="doctors.html" class="cta-btn">Browse our providers &rarr;</a>
             </div>
-            <div class="how-step how-step--right">
-                <span class="step-num">03</span>
-                <h3>Simple, Transparent Pricing</h3>
-                <table class="pricing-table">
-                    <tr>
-                        <td class="pricing-duration">15 min</td>
-                        <td class="pricing-usd">$60</td>
-                        <td class="pricing-inr">Rs 2,400</td>
-                    </tr>
-                    <tr>
-                        <td class="pricing-duration">30 min</td>
-                        <td class="pricing-usd">$99</td>
-                        <td class="pricing-inr">Rs 4,000</td>
-                    </tr>
-                    <tr>
-                        <td class="pricing-duration">60 min</td>
-                        <td class="pricing-usd">$175</td>
-                        <td class="pricing-inr">Rs 7,500</td>
-                    </tr>
-                </table>
+
+            <div class="content-box">
+                <div class="box-eyebrow">
+                    <span class="box-num">03</span>
+                    <span class="box-rule"></span>
+                </div>
+                <h2>About The Longevity Circle</h2>
+                <p>The Longevity Circle is a community built on the belief that access to credible, trustworthy health guidance shouldn't depend on who you know or what you can afford. In our group community, members get ongoing access to expert-informed conversations, evidence-based perspectives, and peer support&mdash;all for free.</p>
+                <p>These one-on-one consultations are an extension of that same commitment. We want to bring you closer to the kind of care that helps you not just manage your health, but actively shape it.</p>
             </div>
+
         </section>
 
-        <section class="doctors-grid">
-            <div class="doctor-card">
-                <div class="card-photo">
-                    <img src="dr-meetali.png" alt="Dr. Meetali Bidaye">
-                </div>
-                <div class="card-info">
-                    <h3>Dr. Meetali Bidaye</h3>
-                    <p class="specialty">Nephrologist</p>
-                    <p class="experience">13 years experience</p>
-                    <div class="card-actions">
-                        <button class="consult-btn" onclick="bookConsult('Dr. Meetali Bidaye')">Book Consult</button>
-                        <button class="profile-btn" onclick="viewProfile('meetali-bidaye')">View Profile</button>
-                    </div>
-                </div>
+        <section class="pricing-section">
+            <div class="pricing-intro">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Pricing reflects the location of your doctor and may vary by provider.</p>
             </div>
-
-            <div class="doctor-card">
-                <div class="card-photo">
-                    <img src="https://placehold.co/300x400/d8d8d8/aaaaaa?text=+" alt="Doctor placeholder">
-                </div>
-                <div class="card-info">
-                    <h3>Lorem Ipsum</h3>
-                    <p class="specialty">Speciality</p>
-                    <p class="experience">Coming soon</p>
-                    <div class="card-actions">
-                        <button class="consult-btn" onclick="bookConsult('Lorem Ipsum')">Book Consult</button>
-                        <button class="profile-btn" onclick="viewProfile('placeholder-2')">View Profile</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="doctor-card">
-                <div class="card-photo">
-                    <img src="https://placehold.co/300x400/d8d8d8/aaaaaa?text=+" alt="Doctor placeholder">
-                </div>
-                <div class="card-info">
-                    <h3>Lorem Ipsum</h3>
-                    <p class="specialty">Speciality</p>
-                    <p class="experience">Coming soon</p>
-                    <div class="card-actions">
-                        <button class="consult-btn" onclick="bookConsult('Lorem Ipsum')">Book Consult</button>
-                        <button class="profile-btn" onclick="viewProfile('placeholder-3')">View Profile</button>
-                    </div>
-                </div>
-            </div>
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>US-based doctors</th>
+                        <th>India-based doctors</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="pt-duration">15 min</td>
+                        <td>$60</td>
+                        <td>Rs 2,400</td>
+                    </tr>
+                    <tr>
+                        <td class="pt-duration">30 min</td>
+                        <td>$99</td>
+                        <td>Rs 4,000</td>
+                    </tr>
+                    <tr>
+                        <td class="pt-duration">60 min</td>
+                        <td>$175</td>
+                        <td>Rs 7,500</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
+
     </main>
-
-    <!-- Profile Drawer -->
-    <div id="drawerOverlay" class="drawer-overlay" onclick="closeDrawer()"></div>
-    <div id="profileDrawer" class="drawer">
-        <button class="drawer-close" onclick="closeDrawer()">&times;</button>
-        <div id="profileDetails"></div>
-    </div>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 © PreventiveHealth.AI | All rights reserved.</p>
+            <p>&copy; 2026 brought to you by The Longevity Circle | Powered by PreventiveHealth.AI | All rights reserved.</p>
+        
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
