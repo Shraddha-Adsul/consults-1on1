@@ -1,82 +1,98 @@
-// Doctor profiles data
-const doctorProfiles = {
-    'meetali-bidaye': {
-        name: 'Dr. Meetali Bidaye',
-        specialty: 'Nephrologist',
-        experience: '13 years',
-        education: 'MBBS, MRCP (London), MRCP (Nephrology)',
-        about: 'Dr. Meetali Bidaye is a UK-trained Nephrologist with over 13 years of experience as a Consultant Nephrologist in Pune. After completing her specialist training in Nephrology in England, she returned to India to bring global best practices to local care. She is the founder of Nivarak (nivarak.com), a preventive eldercare startup focused on proactive, coordinated health support for seniors, and co-founder of the I-SHARE Foundation, an NGO dedicated to improving access to medical care for underserved communities. Outside of medicine, Dr. Bidaye is an avid tennis player and a passionate dog lover.',
-        languages: 'English, Marathi, Hindi',
-        availability: 'By appointment'
-    },
-    'placeholder-2': {
-        name: 'Lorem Ipsum',
-        specialty: 'Speciality',
-        experience: 'Coming soon',
-        education: 'Lorem ipsum dolor sit amet',
-        about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-        languages: 'Lorem, Ipsum',
-        availability: 'Coming soon'
-    },
-    'placeholder-3': {
-        name: 'Lorem Ipsum',
-        specialty: 'Speciality',
-        experience: 'Coming soon',
-        education: 'Lorem ipsum dolor sit amet',
-        about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-        languages: 'Lorem, Ipsum',
-        availability: 'Coming soon'
+// Mobile menu toggle
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('hamburger');
+  const isOpen = menu.classList.contains('open');
+  
+  menu.classList.toggle('open');
+  hamburger.innerHTML = isOpen 
+    ? '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>'
+    : '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
+}
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>';
+  });
+});
+
+// Provider card accordion
+document.querySelectorAll('.provider-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const card = header.closest('.provider-card');
+    const wasOpen = card.classList.contains('open');
+    
+    // Close all cards
+    document.querySelectorAll('.provider-card').forEach(c => c.classList.remove('open'));
+    
+    // Open clicked card if it wasn't already open
+    if (!wasOpen) {
+      card.classList.add('open');
     }
-};
+  });
+});
 
-// Book a consultation
-function bookConsult(doctorName) {
-    alert(`Booking consultation with ${doctorName}...\n\nYou will be redirected to the scheduling page.`);
-    // In a real application, this would redirect to a booking page or open a booking form
-    console.log(`Initiating booking for ${doctorName}`);
-}
-
-// View doctor profile — opens right-hand drawer
-function viewProfile(doctorId) {
-    const doctor = doctorProfiles[doctorId];
-    if (!doctor) return;
-
-    const profileHTML = `
-        <h2>${doctor.name}</h2>
-        <span class="profile-specialty">${doctor.specialty}</span>
-
-        <div class="profile-meta">
-            <p><strong>Experience:</strong> ${doctor.experience}</p>
-            <p><strong>Credentials:</strong> ${doctor.education}</p>
-            <p><strong>Languages:</strong> ${doctor.languages}</p>
-            <p><strong>Availability:</strong> ${doctor.availability}</p>
-        </div>
-
-        <div class="profile-about">
-            <p>${doctor.about}</p>
-        </div>
-
-        <button class="consult-btn" onclick="bookConsult('${doctor.name}'); closeDrawer();" style="width:100%;">
-            Book Consultation
-        </button>
-    `;
-
-    document.getElementById('profileDetails').innerHTML = profileHTML;
-    document.getElementById('profileDrawer').classList.add('open');
-    document.getElementById('drawerOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-}
-
-// Close drawer
-function closeDrawer() {
-    document.getElementById('profileDrawer').classList.remove('open');
-    document.getElementById('drawerOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-}
-
-// Close drawer with Escape key
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeDrawer();
+// Pill navigation - scroll to section and update active state
+document.querySelectorAll('.pill').forEach(pill => {
+  pill.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = pill.getAttribute('data-target');
+    const targetSection = document.getElementById(targetId);
+    
+    // Update active pill immediately for responsiveness
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    
+    if (targetSection) {
+      // Calculate offset: nav height + pill nav height + a small buffer
+      const nav = document.querySelector('.nav');
+      const pillNav = document.querySelector('.pill-nav');
+      const offset = (nav ? nav.offsetHeight : 0) + (pillNav ? pillNav.offsetHeight : 0) + 24;
+      const top = targetSection.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
+  });
+});
+
+// Update active pill on scroll
+function updateActivePill() {
+  const sections = document.querySelectorAll('.concern-section');
+  const pills = document.querySelectorAll('.pill');
+  
+  if (sections.length === 0) return;
+  
+  let currentSection = sections[0].id;
+  
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= 180) {
+      currentSection = section.id;
+    }
+  });
+  
+  pills.forEach(pill => {
+    pill.classList.toggle('active', pill.getAttribute('data-target') === currentSection);
+  });
+}
+
+// Only add scroll listener if pill nav exists
+if (document.querySelector('.pill-nav')) {
+  window.addEventListener('scroll', updateActivePill);
+  updateActivePill();
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
 });

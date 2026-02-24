@@ -1,104 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One-on-One Doctor Consults | The Longevity Circle</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=4">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Longevity Circle — One-on-One Doctor Consultations</title>
+  <meta name="description" content="Private, one-on-one consultations with physicians who make time to actually listen.">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="container header-inner">
-            <div class="header-text">
-                <h1>One-on-One Doctor Consults</h1>
-                <p>Private consultations with vetted physicians, brought to you by The Longevity Circle.</p>
-            </div>
-            <div class="header-logo">
-                <img src="phai-logo.png" alt="PreventiveHealth.AI Logo">
-            </div>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">The Longevity Circle</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="providers.html" class="nav-link">Our Providers</a>
+        <a href="prepare.html" class="nav-link">How to Prepare</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" class="active">Home</a>
+    <a href="providers.html">Our Providers</a>
+    <a href="prepare.html">How to Prepare</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container-narrow">
+      <h1>The health conversations you've been needing.</h1>
+      <p class="hero-subtitle">Private, one-on-one consultations with physicians who make time to actually listen.</p>
+      <p class="hero-body">We connect you with hand-picked doctors and specialists across the US and India for consultations designed around depth, not speed. Whether you're making sense of a diagnosis, reviewing your labs, exploring preventive strategies, or looking for a second opinion you can trust — this is the space for the conversation your regular healthcare doesn't have time for.</p>
+      <div class="hero-ctas">
+        <a href="providers.html" class="btn btn-primary">Browse Providers</a>
+        <a href="#how-it-works" class="btn btn-outline">How It Works</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-narrow"><hr class="divider"></div>
+
+  <!-- Why This Exists -->
+  <section class="section content-section">
+    <div class="container-narrow">
+      <h2>Why This Exists</h2>
+      <p>Over the past year, members of The Longevity Circle have consistently asked us for one thing: the ability to speak with a trusted doctor, one-on-one, outside the constraints of the traditional healthcare system.</p>
+      <p>We get it. A 15-minute appointment rarely leaves room for the questions that actually matter. Why is this happening? What can I do long-term? Is there a better path?</p>
+      <p>This offering is our answer. We built it to give you what the standard system doesn't: time, depth, and a physician who's genuinely listening.</p>
+    </div>
+  </section>
+
+  <div class="container-narrow"><hr class="divider"></div>
+
+  <!-- How It Works -->
+  <section class="section content-section" id="how-it-works">
+    <div class="container-narrow">
+      <h2>How It Works</h2>
+      <p>Getting started is simple. In just three steps, you'll be connected with a physician who's ready to give you the time and attention your health deserves.</p>
+      <div class="steps">
+        <div class="step">
+          <span class="step-number">1</span>
+          <h3>Find your provider</h3>
+          <p>Browse our curated list of providers organized by health concern. Every physician in our network was hand-picked for their clinical expertise and their commitment to thoughtful, patient-centered care.</p>
         </div>
-    </header>
-
-    <main class="container">
-
-        <section class="content-boxes">
-
-            <div class="content-box">
-                <div class="box-eyebrow">
-                    <span class="box-num">01</span>
-                    <span class="box-rule"></span>
-                </div>
-                <h2>About This Offering</h2>
-                <p>Navigating health decisions is hard. A 15-minute appointment rarely leaves room for the questions that actually matter. This offering connects you with vetted physicians for private, one-on-one consultations designed to give you something the standard healthcare system rarely does: time, depth, and perspective.</p>
-                <p>Whether you're trying to make sense of a diagnosis, review your labs, explore preventive interventions, or simply want a second opinion you can trust, these consultations are designed to help you live a healthier life and advocate more confidently for yourself with your own providers.</p>
-            </div>
-
-            <div class="content-box">
-                <div class="box-eyebrow">
-                    <span class="box-num">02</span>
-                    <span class="box-rule"></span>
-                </div>
-                <h2>How We Chose Our Providers</h2>
-                <p class="box-lead">We didn't build a directory. We built a shortlist.</p>
-                <p>Every physician in this network was selected because their philosophy of care aligns with ours. They believe health is an ongoing practice, not just the absence of illness. They approach medicine with curiosity, take prevention seriously, and make time to actually listen. These are doctors we would recommend to our own families, and many of us already do.</p>
-                <a href="doctors.html" class="cta-btn">Browse our providers &rarr;</a>
-            </div>
-
-            <div class="content-box">
-                <div class="box-eyebrow">
-                    <span class="box-num">03</span>
-                    <span class="box-rule"></span>
-                </div>
-                <h2>About The Longevity Circle</h2>
-                <p>The Longevity Circle is a community built on the belief that access to credible, trustworthy health guidance shouldn't depend on who you know or what you can afford. In our group community, members get ongoing access to expert-informed conversations, evidence-based perspectives, and peer support&mdash;all for free.</p>
-                <p>These one-on-one consultations are an extension of that same commitment. We want to bring you closer to the kind of care that helps you not just manage your health, but actively shape it.</p>
-            </div>
-
-        </section>
-
-        <section class="pricing-section">
-            <div class="pricing-intro">
-                <h2>Simple, Transparent Pricing</h2>
-                <p>Pricing reflects the location of your doctor and may vary by provider.</p>
-            </div>
-            <table class="pricing-table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>US-based doctors</th>
-                        <th>India-based doctors</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="pt-duration">15 min</td>
-                        <td>$60</td>
-                        <td>Rs 2,400</td>
-                    </tr>
-                    <tr>
-                        <td class="pt-duration">30 min</td>
-                        <td>$99</td>
-                        <td>Rs 4,000</td>
-                    </tr>
-                    <tr>
-                        <td class="pt-duration">60 min</td>
-                        <td>$175</td>
-                        <td>Rs 7,500</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 brought to you by The Longevity Circle | Powered by PreventiveHealth.AI | All rights reserved.</p>
-        
+        <div class="step">
+          <span class="step-number">2</span>
+          <h3>Book a session</h3>
+          <p>Select a consultation length that fits your needs — 15, 30, or 60 minutes — and pick a time that works for your schedule. Booking is quick and straightforward.</p>
         </div>
-    </footer>
+        <div class="step">
+          <span class="step-number">3</span>
+          <h3>Have the conversation</h3>
+          <p>Join your session with your questions ready. Our providers are here to listen carefully, offer clear guidance, and help you leave with a real understanding of your next steps.</p>
+        </div>
+      </div>
+      <div style="margin-top: 3rem;">
+        <a href="providers.html" class="btn btn-primary">Browse Providers</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-narrow"><hr class="divider"></div>
+
+  <!-- How We Choose -->
+  <section class="section content-section">
+    <div class="container-narrow">
+      <h2>How We Chose Our Providers</h2>
+      <p>We didn't build a directory. We built a shortlist.</p>
+      <p>Every physician in this network was selected because their philosophy of care aligns with ours — they believe health is an ongoing practice, approach medicine with curiosity, take prevention seriously, and make time to actually listen. These are doctors we'd recommend to our own families. Many of us already do.</p>
+    </div>
+  </section>
+
+  <div class="container-narrow"><hr class="divider"></div>
+
+  <!-- About -->
+  <section class="section content-section">
+    <div class="container-narrow">
+      <h2>About The Longevity Circle</h2>
+      <p>This offering is brought to you by The Longevity Circle — a community built on the belief that access to credible, trustworthy health guidance shouldn't depend on who you know or what you can afford.</p>
+      <p>In our community, members get ongoing access to expert-informed conversations, evidence-based perspectives, and peer support. These consultations are an extension of that same commitment.</p>
+      <div style="margin-top: 2rem;">
+        <a href="#" class="btn btn-outline">
+          Join The Longevity Circle
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-narrow"><hr class="divider"></div>
+
+  <!-- Pricing -->
+  <section class="section content-section">
+    <div class="container-narrow">
+      <h2>Simple, Transparent Pricing</h2>
+      <p>Rates vary based on provider location.</p>
+      
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <div></div>
+          <div>15 min</div>
+          <div>30 min</div>
+          <div>60 min</div>
+        </div>
+        <div class="pricing-row">
+          <div>🇺🇸 <span class="pricing-label">US-based</span></div>
+          <div>$60</div>
+          <div>$99</div>
+          <div>$175</div>
+        </div>
+        <div class="pricing-row">
+          <div>🇮🇳 <span class="pricing-label">India-based</span></div>
+          <div>₹2,400</div>
+          <div>₹4,000</div>
+          <div>₹7,500</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <a href="providers.html" class="btn btn-primary">Browse Providers</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 The Longevity Circle | Powered by PreventiveHealth.AI</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
