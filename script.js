@@ -88,6 +88,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
     if (href === '#') return;
+    // Skip provider-cta links (handled by modal)
+    if (this.classList.contains('provider-cta')) return;
     
     e.preventDefault();
     const target = document.querySelector(href);
@@ -96,3 +98,125 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// Booking Modal
+(function() {
+  const modal = document.getElementById('booking-modal');
+  if (!modal) return;
+
+  const formState = document.getElementById('modal-form-state');
+  const thanksState = document.getElementById('modal-thanks-state');
+  const form = document.getElementById('booking-form');
+  const providerNameEl = document.getElementById('modal-provider-name');
+  const formProviderInput = document.getElementById('form-provider');
+  const closeBtn = document.getElementById('modal-close');
+  const doneBtn = document.getElementById('modal-done');
+  const locationHidden = document.getElementById('form-location-hidden');
+  const durationHidden = document.getElementById('form-duration-hidden');
+
+  // Toggle button groups
+  document.querySelectorAll('.toggle-group').forEach(group => {
+    group.querySelectorAll('.toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Deselect siblings
+        group.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+
+        // Update corresponding hidden input
+        if (group.id === 'location-toggle') {
+          locationHidden.value = btn.getAttribute('data-value');
+        } else if (group.id === 'duration-toggle') {
+          durationHidden.value = btn.getAttribute('data-value');
+        }
+      });
+    });
+  });
+
+  function openModal(providerName) {
+    providerNameEl.textContent = providerName;
+    formProviderInput.value = providerName;
+    formState.style.display = '';
+    thanksState.style.display = 'none';
+    form.reset();
+    formProviderInput.value = providerName;
+    locationHidden.value = '';
+    durationHidden.value = '';
+    // Clear toggle selections
+    modal.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('selected'));
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Open modal when any provider CTA is clicked
+  document.querySelectorAll('.provider-cta').forEach(cta => {
+    cta.addEventListener('click', (e) => {
+      e.preventDefault();
+      const providerName = cta.getAttribute('data-provider');
+      if (providerName) {
+        openModal(providerName);
+      }
+    });
+  });
+
+  // Close modal
+  closeBtn.addEventListener('click', closeModal);
+  if (doneBtn) doneBtn.addEventListener('click', closeModal);
+
+  // Close on overlay click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeModal();
+    }
+  });
+
+  // Form submission via Formspree
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Validate toggle selections
+    if (!locationHidden.value) {
+      alert('Please select your location.');
+      return;
+    }
+    if (!durationHidden.value) {
+      alert('Please select a consultation duration.');
+      return;
+    }
+
+    const submitBtn = form.querySelector('.modal-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        formState.style.display = 'none';
+        thanksState.style.display = '';
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      alert('Network error. Please check your connection and try again.');
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Confirm Interest';
+  });
+})();

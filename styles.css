@@ -18,6 +18,10 @@
   box-sizing: border-box;
 }
 
+a, button, [role="button"], .btn, .provider-cta, .toggle-btn, .modal-submit, .modal-done {
+  cursor: pointer;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -430,6 +434,7 @@ ul {
   letter-spacing: 0.02em;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
+  text-decoration: none;
 }
 
 .provider-card.open .provider-cta {
@@ -668,6 +673,195 @@ ul {
 .footer p {
   font-size: 0.875rem;
   color: var(--muted);
+}
+
+/* Booking Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(26, 26, 24, 0.5);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal {
+  position: relative;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.5rem 2rem;
+  animation: modalIn 0.25s ease-out;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  padding: 0.25rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.modal-close:hover {
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.modal-title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.modal-subtitle strong {
+  color: var(--foreground);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1rem;
+  color: var(--foreground);
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-group input::placeholder {
+  color: #B5B3AE;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(42, 111, 91, 0.12);
+}
+
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24' stroke='%23666460'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.form-hint {
+  font-size: 0.8125rem;
+  color: #B5B3AE;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.toggle-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 0.7rem 0.75rem;
+  font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--muted);
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.toggle-btn:hover {
+  border-color: var(--primary);
+  color: var(--foreground);
+}
+
+.toggle-btn.selected {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(42, 111, 91, 0.12);
+}
+
+.modal-submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.modal-thanks {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.modal-thanks .modal-subtitle {
+  margin-bottom: 1.5rem;
+}
+
+.modal-done {
+  margin-top: 0.5rem;
 }
 
 /* Responsive */

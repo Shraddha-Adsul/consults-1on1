@@ -91,7 +91,7 @@
               </ul>
             </div>
           </div>
-          <a href="#calendly-makhija" class="provider-cta">
+          <a href="#" class="provider-cta" data-provider="Dr. Chhaya Makhija" onclick="return false">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -133,7 +133,7 @@
               </ul>
             </div>
           </div>
-          <a href="#calendly-bangar" class="provider-cta">
+          <a href="#" class="provider-cta" data-provider="Dr. Kashinath Bangar" onclick="return false">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -167,7 +167,7 @@
               </ul>
             </div>
           </div>
-          <a href="#calendly-sane" class="provider-cta">
+          <a href="#" class="provider-cta" data-provider="Dr. Sourabh Sane" onclick="return false">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -209,7 +209,7 @@
               </ul>
             </div>
           </div>
-          <a href="#calendly-talansky" class="provider-cta">
+          <a href="#" class="provider-cta" data-provider="Andrew Talansky" onclick="return false">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -251,7 +251,7 @@
               </ul>
             </div>
           </div>
-          <a href="#calendly-kalpana-raval" class="provider-cta">
+          <a href="#" class="provider-cta" data-provider="Dr. Kalpana Raval" onclick="return false">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -285,7 +285,7 @@
               </ul>
             </div>
           </div>
-          <a href="#calendly-nischol-raval" class="provider-cta">
+          <a href="#" class="provider-cta" data-provider="Dr. Nischol Raval" onclick="return false">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -327,7 +327,7 @@
               </ul>
             </div>
           </div>
-          <a href="#calendly-parasnis" class="provider-cta">
+          <a href="#" class="provider-cta" data-provider="Dr. Mugdha Parasnis" onclick="return false">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -369,7 +369,7 @@
               </ul>
             </div>
           </div>
-          <a href="#calendly-phatak" class="provider-cta">
+          <a href="#" class="provider-cta" data-provider="Dr. Sanat Phatak" onclick="return false">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -403,7 +403,7 @@
               </ul>
             </div>
           </div>
-          <a href="#calendly-bidaye" class="provider-cta">
+          <a href="#" class="provider-cta" data-provider="Dr. Meetali Bidaye" onclick="return false">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -411,6 +411,73 @@
       </div>
     </section>
 
+  </div>
+
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="booking-modal">
+    <div class="modal">
+      <button class="modal-close" id="modal-close" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Form State -->
+      <div id="modal-form-state">
+        <h2 class="modal-title">Confirm Interest</h2>
+        <p class="modal-subtitle">You're booking a consultation with <strong id="modal-provider-name"></strong>. Please enter your personal details below, and we'll confirm your booking within 24 hours.</p>
+
+        <form id="booking-form" action="https://formspree.io/f/mlgwzbpe" method="POST">
+          <input type="hidden" name="provider" id="form-provider">
+          <input type="hidden" name="location" id="form-location-hidden">
+          <input type="hidden" name="duration" id="form-duration-hidden">
+
+          <div class="form-group">
+            <label for="form-name">Your Name</label>
+            <input type="text" id="form-name" name="name" required placeholder="Full name">
+          </div>
+
+          <div class="form-group">
+            <label for="form-email">Email</label>
+            <input type="email" id="form-email" name="email" required placeholder="you@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="form-phone">Phone Number</label>
+            <p class="form-hint">Please include country code</p>
+            <input type="tel" id="form-phone" name="phone" required placeholder="+1 (555) 123-4567">
+          </div>
+
+          <div class="form-group">
+            <label>Your Location</label>
+            <div class="toggle-group" id="location-toggle">
+              <button type="button" class="toggle-btn" data-value="U.S.">U.S.</button>
+              <button type="button" class="toggle-btn" data-value="India">India</button>
+              <button type="button" class="toggle-btn" data-value="Other">Other</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Consultation Duration</label>
+            <div class="toggle-group" id="duration-toggle">
+              <button type="button" class="toggle-btn" data-value="15 minutes">15 min</button>
+              <button type="button" class="toggle-btn" data-value="30 minutes">30 min</button>
+              <button type="button" class="toggle-btn" data-value="60 minutes">60 min</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary modal-submit">Confirm Interest</button>
+        </form>
+      </div>
+
+      <!-- Thank You State -->
+      <div id="modal-thanks-state" style="display: none;">
+        <div class="modal-thanks">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="var(--primary)" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <h2 class="modal-title" style="margin-top: 1.5rem;">Thank You!</h2>
+          <p class="modal-subtitle">Thank you for your interest. We'll confirm your booking within 24 hours.</p>
+          <button class="btn btn-outline modal-done" id="modal-done">Done</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Footer -->
