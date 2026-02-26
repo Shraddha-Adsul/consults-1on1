@@ -10,6 +10,28 @@ function toggleMobileMenu() {
     : '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
 }
 
+// Nav scroll transition — transparent over hero, solid after
+(function() {
+  const nav = document.querySelector('.nav');
+  const hero = document.getElementById('hero');
+  if (!nav || !hero) return;
+
+  function updateNav() {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    // Switch when hero bottom passes below the nav height
+    if (heroBottom <= nav.offsetHeight) {
+      nav.classList.remove('nav-transparent');
+    } else {
+      nav.classList.add('nav-transparent');
+    }
+  }
+
+  // Set initial state
+  updateNav();
+  window.addEventListener('scroll', updateNav, { passive: true });
+  window.addEventListener('resize', updateNav, { passive: true });
+})();
+
 // Close mobile menu when clicking a link
 document.querySelectorAll('.mobile-menu a').forEach(link => {
   link.addEventListener('click', () => {

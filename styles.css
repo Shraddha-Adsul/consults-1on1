@@ -32,6 +32,12 @@ body {
   color: var(--foreground);
   line-height: 1.6;
   font-size: 16px;
+  animation: pageIn 0.4s ease-out;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -64,34 +70,43 @@ ul {
 
 /* Navigation */
 .nav {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 0.75rem;
+  left: 1rem;
+  right: 1rem;
   z-index: 100;
-  background: rgba(250, 250, 247, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  background: rgba(250, 250, 247, 0.85);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .nav-inner {
   max-width: 880px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 56px;
 }
 
 .nav-logo {
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: 1.125rem;
-  color: var(--foreground);
-  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.nav-logo img {
+  height: 28px;
+  width: auto;
+  display: block;
 }
 
 .nav-logo:hover {
-  color: var(--primary);
+  opacity: 0.8;
 }
 
 .nav-links {
@@ -108,7 +123,7 @@ ul {
   color: var(--muted);
   padding: 0.5rem 0;
   position: relative;
-  transition: color 0.2s;
+  transition: color 0.3s ease;
 }
 
 .nav-link:hover {
@@ -136,6 +151,7 @@ ul {
   cursor: pointer;
   padding: 0.5rem;
   color: var(--foreground);
+  transition: color 0.3s ease;
 }
 
 .nav-hamburger svg {
@@ -147,7 +163,7 @@ ul {
 .mobile-menu {
   display: none;
   position: fixed;
-  inset: 64px 0 0 0;
+  inset: 0;
   background: var(--background);
   z-index: 99;
   flex-direction: column;
@@ -239,16 +255,71 @@ ul {
   margin: 0;
 }
 
-/* Hero */
-.hero {
-  padding: 4rem 0 5rem;
-  text-align: center;
+/* Hero — Full-bleed image layout */
+.hero-image {
+  position: relative;
+  width: 100%;
+  min-height: 75vh;
+  background-image: url('images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
 }
 
-.hero h1 {
+.hero-image--tall {
+  min-height: 100vh;
+}
+
+/* Subtle dark tint on the image */
+.hero-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.08);
+  z-index: 1;
+}
+
+/* Gradient overlay — cream fading to transparent (left + bottom) */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(
+      to right,
+      #FAFAF7 0%,
+      #FAFAF7 25%,
+      rgba(250, 250, 247, 0.85) 42%,
+      rgba(250, 250, 247, 0.4) 58%,
+      transparent 75%
+    ),
+    linear-gradient(
+      to top,
+      #FAFAF7 0%,
+      rgba(250, 250, 247, 0.6) 8%,
+      transparent 20%
+    );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 480px;
+  width: 100%;
+  margin-left: max(1rem, calc((100% - 880px) / 2 + 1rem));
+  margin-right: auto;
+  padding: 0 1rem;
+  padding-top: 96px; /* clear the floating nav */
+  padding-bottom: 3rem;
+}
+
+.hero-content h1 {
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   letter-spacing: -0.02em;
+  text-align: left;
 }
 
 .hero-subtitle {
@@ -256,21 +327,60 @@ ul {
   color: var(--primary);
   font-weight: 500;
   margin-bottom: 1.5rem;
+  text-align: left;
 }
 
 .hero-body {
   font-size: 1rem;
   color: var(--muted);
-  max-width: 720px;
-  margin: 0 auto 2.5rem;
   line-height: 1.7;
+  margin-bottom: 2.5rem;
+  text-align: left;
 }
 
 .hero-ctas {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
+}
+
+/* Nav transparent state (over hero) */
+.nav.nav-transparent {
+  background: rgba(0, 0, 0, 0.15);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+}
+
+.nav.nav-transparent .nav-logo img {
+  filter: brightness(0) invert(1);
+}
+
+.nav.nav-transparent .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.nav.nav-transparent .nav-link:hover {
+  color: #fff;
+}
+
+.nav.nav-transparent .nav-link.active {
+  color: #fff;
+}
+
+.nav.nav-transparent .nav-link.active::after {
+  background: #fff;
+}
+
+.nav.nav-transparent .nav-hamburger {
+  color: #fff;
+}
+
+/* Smooth transition for nav */
+.nav {
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, -webkit-backdrop-filter 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 /* Content Sections */
@@ -373,12 +483,13 @@ ul {
 /* Pill Navigation */
 .pill-nav {
   position: sticky;
-  top: 64px;
+  top: 0;
   z-index: 50;
   background: rgba(250, 250, 247, 0.95);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
 }
 
 .pill-nav-inner {
@@ -866,7 +977,7 @@ ul {
 
 /* Responsive */
 @media (min-width: 640px) {
-  .hero h1 {
+  .hero-content h1 {
     font-size: 3rem;
   }
   
@@ -880,7 +991,7 @@ ul {
   
   .hero-ctas {
     flex-direction: row;
-    justify-content: center;
+    align-items: flex-start;
   }
   
   .steps {
@@ -898,16 +1009,23 @@ ul {
 }
 
 @media (min-width: 768px) {
-  .nav-inner {
-    height: 80px;
+  .nav {
+    top: 1rem;
+    left: 2rem;
+    right: 2rem;
   }
-  
-  .nav-logo {
-    font-size: 1.25rem;
+
+  .nav-inner {
+    height: 60px;
+    padding: 0 1.5rem;
+  }
+
+  .nav-logo img {
+    height: 32px;
   }
   
   .pill-nav {
-    top: 80px;
+    top: 0;
   }
   
   .concern-section {
@@ -916,11 +1034,7 @@ ul {
 }
 
 @media (min-width: 1024px) {
-  .hero {
-    padding: 6rem 0 7rem;
-  }
-  
-  .hero h1 {
+  .hero-content h1 {
     font-size: 3.75rem;
   }
   
@@ -965,6 +1079,39 @@ ul {
   
   .nav-hamburger {
     display: block;
+  }
+
+  /* Hero mobile adjustments */
+  .hero-image {
+    min-height: 55vh;
+  }
+
+  .hero-image--tall {
+    min-height: 75vh;
+  }
+
+  .hero-content {
+    padding-top: 76px;
+    margin-left: 1rem;
+    max-width: 85%;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        to right,
+        #FAFAF7 0%,
+        #FAFAF7 30%,
+        rgba(250, 250, 247, 0.92) 50%,
+        rgba(250, 250, 247, 0.5) 70%,
+        transparent 90%
+      ),
+      linear-gradient(
+        to top,
+        #FAFAF7 0%,
+        rgba(250, 250, 247, 0.6) 10%,
+        transparent 25%
+      );
   }
 
   .pill-nav-inner {
