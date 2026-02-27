@@ -242,3 +242,92 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     submitBtn.textContent = 'Confirm Interest';
   });
 })();
+
+// Feedback Widget
+function toggleFeedback() {
+  const fab = document.getElementById('feedback-fab');
+  const panel = document.getElementById('feedback-panel');
+  if (!fab || !panel) return;
+
+  const isOpen = panel.classList.contains('open');
+  if (isOpen) {
+    panel.classList.remove('open');
+    fab.classList.remove('hidden');
+    // Reset to form state when closing
+    const formState = document.getElementById('feedback-form-state');
+    const thanksState = document.getElementById('feedback-thanks-state');
+    if (formState) formState.style.display = '';
+    if (thanksState) thanksState.style.display = 'none';
+  } else {
+    panel.classList.add('open');
+    fab.classList.add('hidden');
+  }
+}
+
+// Feedback toggle buttons & form submission
+(function() {
+  const form = document.getElementById('feedback-form');
+  if (!form) return;
+
+  const locationHidden = document.getElementById('feedback-location-hidden');
+  const ageHidden = document.getElementById('feedback-age-hidden');
+
+  // Wire up feedback toggle groups
+  document.querySelectorAll('#feedback-location-toggle .toggle-btn, #feedback-age-toggle .toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.closest('.toggle-group');
+      group.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+
+      if (group.id === 'feedback-location-toggle') {
+        locationHidden.value = btn.getAttribute('data-value');
+      } else if (group.id === 'feedback-age-toggle') {
+        ageHidden.value = btn.getAttribute('data-value');
+      }
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!locationHidden.value) {
+      alert('Please select your location.');
+      return;
+    }
+    if (!ageHidden.value) {
+      alert('Please select your age range.');
+      return;
+    }
+
+    const submitBtn = form.querySelector('.feedback-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        document.getElementById('feedback-form-state').style.display = 'none';
+        document.getElementById('feedback-thanks-state').style.display = '';
+        form.reset();
+        locationHidden.value = '';
+        ageHidden.value = '';
+        // Clear toggle selections
+        document.querySelectorAll('#feedback-location-toggle .toggle-btn, #feedback-age-toggle .toggle-btn').forEach(b => b.classList.remove('selected'));
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      alert('Network error. Please check your connection and try again.');
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Feedback';
+  });
+})();

@@ -33,15 +33,22 @@
   </div>
 
   <!-- Hero Section -->
-  <section class="hero-image" id="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>For all your health conversations: from lab results to life plans</h1>
-      <p class="hero-subtitle">Private, one-on-one consultations with physicians you can trust</p>
-      <p class="hero-body">We've hand-picked doctors and specialists from across the world for consultations designed for depth. Whether you're making sense of a diagnosis, reviewing your labs, exploring preventive strategies, or looking for a second opinion — this is the space for all the conversations you've wanted to have.</p>
-      <div class="hero-ctas">
-        <a href="providers.html" class="btn btn-primary">Browse Providers</a>
-        <a href="#how-it-works" class="btn btn-outline">How It Works</a>
+  <section class="hero-section" id="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <p class="hero-eyebrow">The Longevity Circle</p>
+        <h1>For all your health conversations: from lab results to life plans</h1>
+        <p class="hero-subtitle">Private, one-on-one consultations with physicians you can trust</p>
+        <p class="hero-body">We've hand-picked doctors and specialists from across the world for consultations designed for depth. Whether you're making sense of a diagnosis, reviewing your labs, exploring preventive strategies, or looking for a second opinion — this is the space for all the conversations you've wanted to have.</p>
+        <div class="hero-ctas">
+          <a href="providers.html" class="btn btn-primary">Browse Providers</a>
+          <a href="#how-it-works" class="btn btn-outline">How It Works</a>
+        </div>
+      </div>
+      <div class="hero-image-col">
+        <div class="hero-image-wrapper">
+          <img src="images/hero.jpg" alt="Doctor consultation in a warm, professional setting" class="hero-image">
+        </div>
       </div>
     </div>
   </section>
@@ -122,31 +129,54 @@
   <section class="section content-section">
     <div class="container-narrow">
       <h2>Simple, Transparent Pricing</h2>
-      <p>Rates vary based on provider location.</p>
+      <p>Rates vary based on provider location. Choose the session length that fits your needs.</p>
       
-      <div class="pricing-card">
-        <div class="pricing-header">
-          <div></div>
-          <div>15 min</div>
-          <div>30 min</div>
-          <div>60 min</div>
+      <div class="pricing-cards">
+        <!-- 30-Minute Card -->
+        <div class="pricing-card-v2">
+          <div class="pricing-card-badge">Most Popular</div>
+          <div class="pricing-card-duration">30 minutes</div>
+          <p class="pricing-card-desc">Ideal for focused conversations — reviewing lab results, getting a second opinion, or discussing a specific concern.</p>
+          <div class="pricing-card-prices">
+            <div class="pricing-card-price">
+              <span class="pricing-flag">🇺🇸</span>
+              <div>
+                <span class="pricing-original">$149</span>
+                <span class="pricing-current">$99</span>
+              </div>
+            </div>
+            <div class="pricing-card-price">
+              <span class="pricing-flag">🇮🇳</span>
+              <div>
+                <span class="pricing-original">₹5,900</span>
+                <span class="pricing-current">₹4,000</span>
+              </div>
+            </div>
+          </div>
+          <a href="providers.html" class="btn btn-primary pricing-card-cta">Browse Providers</a>
         </div>
-        <div class="pricing-row">
-          <div>🇺🇸 <span class="pricing-label">US-based</span></div>
-          <div>$60</div>
-          <div>$99</div>
-          <div>$175</div>
+        <!-- 60-Minute Card -->
+        <div class="pricing-card-v2">
+          <div class="pricing-card-duration">60 minutes</div>
+          <p class="pricing-card-desc">For deeper exploration — building a preventive plan, understanding a complex diagnosis, or mapping long-term health goals.</p>
+          <div class="pricing-card-prices">
+            <div class="pricing-card-price">
+              <span class="pricing-flag">🇺🇸</span>
+              <div>
+                <span class="pricing-original">$299</span>
+                <span class="pricing-current">$199</span>
+              </div>
+            </div>
+            <div class="pricing-card-price">
+              <span class="pricing-flag">🇮🇳</span>
+              <div>
+                <span class="pricing-original">₹10,000</span>
+                <span class="pricing-current">₹7,500</span>
+              </div>
+            </div>
+          </div>
+          <a href="providers.html" class="btn btn-primary pricing-card-cta">Browse Providers</a>
         </div>
-        <div class="pricing-row">
-          <div>🇮🇳 <span class="pricing-label">India-based</span></div>
-          <div>₹2,400</div>
-          <div>₹4,000</div>
-          <div>₹7,500</div>
-        </div>
-      </div>
-
-      <div style="margin-top: 2rem;">
-        <a href="providers.html" class="btn btn-primary">Browse Providers</a>
       </div>
     </div>
   </section>
@@ -157,6 +187,71 @@
       <p>© 2026 The Longevity Circle | Powered by PreventiveHealth.AI</p>
     </div>
   </footer>
+
+  <!-- Feedback Widget -->
+  <div class="feedback-fab" id="feedback-fab" onclick="toggleFeedback()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+    </svg>
+  </div>
+
+  <div class="feedback-panel" id="feedback-panel">
+    <div class="feedback-panel-header">
+      <h3>Give Feedback</h3>
+      <button class="feedback-panel-close" id="feedback-close" onclick="toggleFeedback()" aria-label="Close feedback">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Form state -->
+    <div id="feedback-form-state">
+      <p class="feedback-panel-subtitle">Help us improve. Your feedback remains anonymous.</p>
+      <form id="feedback-form" action="https://formspree.io/f/meelnrrw" method="POST">
+        <input type="hidden" name="_subject" value="Feedback — The Longevity Circle">
+        <input type="hidden" id="feedback-location-hidden" name="location" value="">
+        <input type="hidden" id="feedback-age-hidden" name="age_range" value="">
+        <div class="form-group">
+          <label for="feedback-message">Your Feedback</label>
+          <textarea id="feedback-message" name="feedback" rows="4" placeholder="How can we improve?" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <div class="toggle-group" id="feedback-location-toggle">
+            <button type="button" class="toggle-btn" data-value="US">U.S.</button>
+            <button type="button" class="toggle-btn" data-value="India">India</button>
+            <button type="button" class="toggle-btn" data-value="Other">Other</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Age</label>
+          <div class="toggle-group" id="feedback-age-toggle">
+            <button type="button" class="toggle-btn" data-value="18-34">18–34</button>
+            <button type="button" class="toggle-btn" data-value="35-54">35–54</button>
+            <button type="button" class="toggle-btn" data-value="55+">55+</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="feedback-email">Email <span class="form-optional">(optional)</span></label>
+          <input type="email" id="feedback-email" name="email" placeholder="your@email.com">
+        </div>
+        <button type="submit" class="btn btn-primary feedback-submit">Send Feedback</button>
+      </form>
+    </div>
+
+    <!-- Thank-you state -->
+    <div id="feedback-thanks-state" style="display: none;">
+      <div class="feedback-thanks">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="var(--primary)" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <h3>Thank you!</h3>
+        <p>Your feedback helps us build something better.</p>
+        <button class="btn btn-outline feedback-done" onclick="toggleFeedback()">Close</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
