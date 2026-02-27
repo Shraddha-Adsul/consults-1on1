@@ -29,6 +29,20 @@ html {
 body {
   font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: #f5f3ee;
+  color: var(--foreground);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-animation: pageIn 0.4s ease-out;
+  animation: pageIn 0.4s ease-out;
+}
+
+/* Fixed background via pseudo-element — works on iOS Safari where background-attachment: fixed is unsupported */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: #f5f3ee;
   background-image:
     /* Top-left: soft teal bloom — anchors to the primary brand color */
     radial-gradient(ellipse 70% 55% at 8% 3%, rgba(42, 111, 91, 0.09) 0%, transparent 100%),
@@ -42,13 +56,14 @@ body {
     radial-gradient(ellipse 45% 55% at 15% 75%, rgba(42, 111, 91, 0.05) 0%, transparent 100%),
     /* Base directional shift — warm-cool-warm rhythm for dimension */
     linear-gradient(165deg, #f6f3ed 0%, #edf3f0 28%, #f7f3ec 50%, #ecf0f5 72%, #f5f1ea 100%);
-  background-attachment: fixed;
-  color: var(--foreground);
-  line-height: 1.6;
-  font-size: 16px;
-  animation: pageIn 0.4s ease-out;
+  background-size: cover;
+  pointer-events: none;
 }
 
+@-webkit-keyframes pageIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 @keyframes pageIn {
   from { opacity: 0; }
   to   { opacity: 1; }
@@ -1033,6 +1048,7 @@ ul {
     0 24px 48px rgba(0, 0, 0, 0.12);
   padding: 1.75rem 1.5rem;
   display: none;
+  -webkit-animation: feedbackIn 0.25s ease-out;
   animation: feedbackIn 0.25s ease-out;
 }
 
@@ -1040,6 +1056,18 @@ ul {
   display: block;
 }
 
+@-webkit-keyframes feedbackIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(12px) scale(0.95);
+    transform: translateY(12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1);
+  }
+}
 @keyframes feedbackIn {
   from {
     opacity: 0;
@@ -1197,9 +1225,22 @@ ul {
   max-height: 90vh;
   overflow-y: auto;
   padding: 2.5rem 2rem;
+  -webkit-animation: modalIn 0.25s ease-out;
   animation: modalIn 0.25s ease-out;
 }
 
+@-webkit-keyframes modalIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(12px) scale(0.97);
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1);
+  }
+}
 @keyframes modalIn {
   from {
     opacity: 0;
