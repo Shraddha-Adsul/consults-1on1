@@ -10,27 +10,6 @@ function toggleMobileMenu() {
     : '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
 }
 
-// Nav scroll transition — transparent over hero, solid after
-(function() {
-  const nav = document.querySelector('.nav');
-  const hero = document.getElementById('hero');
-  if (!nav || !hero) return;
-
-  function updateNav() {
-    const heroBottom = hero.getBoundingClientRect().bottom;
-    // Switch when hero bottom passes below the nav height
-    if (heroBottom <= nav.offsetHeight) {
-      nav.classList.remove('nav-transparent');
-    } else {
-      nav.classList.add('nav-transparent');
-    }
-  }
-
-  // Set initial state
-  updateNav();
-  window.addEventListener('scroll', updateNav, { passive: true });
-  window.addEventListener('resize', updateNav, { passive: true });
-})();
 
 // Close mobile menu when clicking a link
 document.querySelectorAll('.mobile-menu a').forEach(link => {
@@ -56,24 +35,36 @@ document.querySelectorAll('.provider-header').forEach(header => {
   });
 });
 
-// Pill navigation - scroll to section and update active state
+// Pill navigation - scroll to section, update active state, and highlight
 document.querySelectorAll('.pill').forEach(pill => {
   pill.addEventListener('click', (e) => {
     e.preventDefault();
     const targetId = pill.getAttribute('data-target');
     const targetSection = document.getElementById(targetId);
-    
+
     // Update active pill immediately for responsiveness
     document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
     pill.classList.add('active');
-    
+
     if (targetSection) {
-      // Calculate offset: nav height + pill nav height + a small buffer
+      // Calculate offset: nav height + a small buffer
       const nav = document.querySelector('.nav');
-      const pillNav = document.querySelector('.pill-nav');
-      const offset = (nav ? nav.offsetHeight : 0) + (pillNav ? pillNav.offsetHeight : 0) + 24;
+      const offset = (nav ? nav.offsetHeight : 0) + 24;
       const top = targetSection.getBoundingClientRect().top + window.pageYOffset - offset;
       window.scrollTo({ top, behavior: 'smooth' });
+
+      // Highlight the target section with a bop after scroll settles
+      setTimeout(() => {
+        // Remove any existing highlights
+        document.querySelectorAll('.concern-section.highlighted').forEach(s => s.classList.remove('highlighted'));
+        // Force reflow so re-adding the class restarts the animation
+        void targetSection.offsetWidth;
+        targetSection.classList.add('highlighted');
+        // Clean up after animation completes
+        targetSection.addEventListener('animationend', () => {
+          targetSection.classList.remove('highlighted');
+        }, { once: true });
+      }, 400);
     }
   });
 });
