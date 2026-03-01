@@ -1565,4 +1565,10 @@ ul {
     bottom: 1rem;
     right: 1rem;
   }
+
+  /* Hide feedback FAB on providers page mobile — conflicts with pill nav */
+  .page-providers .feedback-fab,
+  .page-providers .feedback-panel {
+    display: none !important;
+  }
 }
