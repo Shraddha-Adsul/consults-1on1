@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Providers — The Longevity Circle</title>
   <meta name="description" content="Browse our hand-picked physicians and specialists across the US and India.">
-  <link rel="stylesheet" href="styles.css?v=20260227">
+  <link rel="stylesheet" href="styles.css?v=20260228">
 </head>
 <body>
   <!-- Navigation -->
@@ -17,7 +17,7 @@
         <a href="providers.html" class="nav-link active">Our Providers</a>
         <a href="prepare.html" class="nav-link">How to Prepare</a>
       </div>
-      <button class="nav-hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -33,12 +33,17 @@
   </div>
 
   <!-- Page Header -->
-  <section class="hero-section hero-short" id="hero">
-    <div class="hero-card">
-      <div class="hero-overlay"></div>
+  <section class="hero-section hero-compact" id="hero">
+    <div class="hero-inner">
       <div class="hero-content">
+        <p class="hero-eyebrow">Our Network</p>
         <h1>Our Providers</h1>
-        <p class="hero-body" style="margin-bottom: 0;">Every physician and specialist in our network was chosen for one reason: they practice medicine the way we believe it should be practiced — with curiosity, depth, and a genuine commitment to prevention. Browse by the area that matters most to you.</p>
+        <p class="hero-body mb-0">Every physician and specialist in our network was chosen for one reason: they practice medicine the way we believe it should be practiced — with curiosity, depth, and a genuine commitment to prevention.</p>
+      </div>
+      <div class="hero-image-col">
+        <div class="hero-image-wrapper">
+          <img src="images/hero-providers.jpg" alt="Peaceful desk by a window" class="hero-image">
+        </div>
       </div>
     </div>
   </section>
@@ -56,7 +61,7 @@
   </div>
 
   <!-- Provider Sections -->
-  <div class="container" style="max-width: 880px; padding-top: 2rem; padding-bottom: 7rem;">
+  <div class="provider-container">
 
     <!-- Hormones & Metabolism -->
     <section class="concern-section" id="hormones">
@@ -65,8 +70,8 @@
       
       <div class="provider-cards">
         <div class="provider-card">
-          <button class="provider-header">
-            <div class="provider-avatar"><span>CM</span></div>
+          <button class="provider-header" aria-expanded="false">
+            <div class="provider-avatar"><img src="images/dr-chhaya-makhija.jpg" alt="Dr. Chhaya Makhija"></div>
             <div class="provider-info">
               <div class="provider-name-row">
                 <span class="provider-flag">🇺🇸</span>
@@ -77,25 +82,34 @@
             <svg class="provider-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="provider-content">
-            <p class="provider-affiliation">Founder, Unified Endocrine and Diabetes Care · California</p>
-            <div class="provider-section">
-              <h4>About</h4>
-              <p>I'm a triple board-certified physician specializing in Diabetes, Endocrinology and Metabolism, and Lifestyle Medicine. I trained in India before completing my Internal Medicine residency in New Jersey, diabetes research at Albert Einstein College of Medicine, and an Endocrinology fellowship at the University of Nebraska Medical Center. I founded Unified Endocrine and Diabetes Care in California — a Direct Care practice where I integrate nutrition, movement, and mindfulness into prevention and personalized care. I also teach at California Health Sciences University and UCSF Fresno, educate nationally, and host the Hormones and Hope podcast.</p>
-            </div>
-            <div class="provider-section">
-              <h4>What I help with</h4>
-              <ul>
-                <li>Thyroid disorders and hormonal imbalances</li>
-                <li>Diabetes management and prevention</li>
-                <li>Metabolic health optimization</li>
-                <li>Integrating lifestyle medicine into endocrine care</li>
-              </ul>
+            <div class="provider-expanded">
+              <div class="provider-expanded-photo">
+                <img src="images/dr-chhaya-makhija.jpg" alt="Dr. Chhaya Makhija">
+              </div>
+              <div class="provider-expanded-body">
+                <h3 class="provider-expanded-name">Dr. Chhaya Makhija</h3>
+                <p class="provider-expanded-subtitle">Endocrinology, Diabetes & Lifestyle Medicine</p>
+                <p class="provider-affiliation">Founder, Unified Endocrine and Diabetes Care · California</p>
+                <div class="provider-section">
+                  <h4>About</h4>
+                  <p>I'm a triple board-certified physician specializing in Diabetes, Endocrinology and Metabolism, and Lifestyle Medicine. I trained in India before completing my Internal Medicine residency in New Jersey, diabetes research at Albert Einstein College of Medicine, and an Endocrinology fellowship at the University of Nebraska Medical Center. I founded Unified Endocrine and Diabetes Care in California — a Direct Care practice where I integrate nutrition, movement, and mindfulness into prevention and personalized care. I also teach at California Health Sciences University and UCSF Fresno, educate nationally, and host the Hormones and Hope podcast.</p>
+                </div>
+                <div class="provider-section">
+                  <h4>What I help with</h4>
+                  <ul>
+                    <li>Thyroid disorders and hormonal imbalances</li>
+                    <li>Diabetes management and prevention</li>
+                    <li>Metabolic health optimization</li>
+                    <li>Integrating lifestyle medicine into endocrine care</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <a href="#" class="provider-cta" data-provider="Dr. Chhaya Makhija" onclick="return false">
+          <button class="provider-cta" data-provider="Dr. Chhaya Makhija">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -107,8 +121,8 @@
       
       <div class="provider-cards">
         <div class="provider-card">
-          <button class="provider-header">
-            <div class="provider-avatar"><span>KB</span></div>
+          <button class="provider-header" aria-expanded="false">
+            <div class="provider-avatar"><img src="images/Dr-Kashinath-Bangar.jpg" alt="Dr. Kashinath Bangar"></div>
             <div class="provider-info">
               <div class="provider-name-row">
                 <span class="provider-flag">🇮🇳</span>
@@ -119,30 +133,39 @@
             <svg class="provider-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="provider-content">
-            <p class="provider-affiliation">Founder & Director, The Painex Clinic at Ruby Hall Clinic · Pune</p>
-            <div class="provider-section">
-              <h4>About</h4>
-              <p>I'm a pain and palliative care physician focused on delivering evidence-based, interventional pain management to improve quality of life. I founded The Painex Clinic at Ruby Hall Clinic in Pune and have served as a consultant at MJM Hospital and Joshi and Ratna Hospital for over a decade. I completed my MBBS from GMC Miraj, followed by a DNB in Anaesthesiology, and advanced fellowships in pain medicine from the Daradia Institute, IASP-ISSP, and the Indian Academy of Pain. My academic work includes peer-reviewed publications, national and international conference presentations, and faculty roles in pain medicine training programs.</p>
-            </div>
-            <div class="provider-section">
-              <h4>What I help with</h4>
-              <ul>
-                <li>Chronic pain assessment and management</li>
-                <li>Interventional pain procedures</li>
-                <li>Palliative care and quality of life</li>
-                <li>Understanding pain beyond symptom suppression</li>
-              </ul>
+            <div class="provider-expanded">
+              <div class="provider-expanded-photo">
+                <img src="images/Dr-Kashinath-Bangar.jpg" alt="Dr. Kashinath Bangar">
+              </div>
+              <div class="provider-expanded-body">
+                <h3 class="provider-expanded-name">Dr. Kashinath Bangar</h3>
+                <p class="provider-expanded-subtitle">Pain & Palliative Care</p>
+                <p class="provider-affiliation">Founder & Director, The Painex Clinic at Ruby Hall Clinic · Pune</p>
+                <div class="provider-section">
+                  <h4>About</h4>
+                  <p>I'm a pain and palliative care physician focused on delivering evidence-based, interventional pain management to improve quality of life. I founded The Painex Clinic at Ruby Hall Clinic in Pune and have served as a consultant at MJM Hospital and Joshi and Ratna Hospital for over a decade. I completed my MBBS from GMC Miraj, followed by a DNB in Anaesthesiology, and advanced fellowships in pain medicine from the Daradia Institute, IASP-ISSP, and the Indian Academy of Pain. My academic work includes peer-reviewed publications, national and international conference presentations, and faculty roles in pain medicine training programs.</p>
+                </div>
+                <div class="provider-section">
+                  <h4>What I help with</h4>
+                  <ul>
+                    <li>Chronic pain assessment and management</li>
+                    <li>Interventional pain procedures</li>
+                    <li>Palliative care and quality of life</li>
+                    <li>Understanding pain beyond symptom suppression</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <a href="#" class="provider-cta" data-provider="Dr. Kashinath Bangar" onclick="return false">
+          <button class="provider-cta" data-provider="Dr. Kashinath Bangar">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
+          </button>
         </div>
 
         <div class="provider-card">
-          <button class="provider-header">
-            <div class="provider-avatar"><span>SS</span></div>
+          <button class="provider-header" aria-expanded="false">
+            <div class="provider-avatar"><img src="images/Dr-Sourabh-Sane.jpg" alt="Dr. Sourabh Sane"></div>
             <div class="provider-info">
               <div class="provider-name-row">
                 <span class="provider-flag">🇮🇳</span>
@@ -153,25 +176,34 @@
             <svg class="provider-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="provider-content">
-            <p class="provider-affiliation">Physiotherapist & Lifestyle Coach · Pune</p>
-            <div class="provider-section">
-              <h4>About</h4>
-              <p>I'm a professional physiotherapist and lifestyle coach dedicated to helping individuals and communities achieve optimal health at every stage of life. With extensive experience in sports rehabilitation and preventive health, I specialize in coaching people through science-based lifestyle changes that promote longevity, vitality, and resilience. I believe that integrating preventive and corrective techniques into daily routines can transform not just individual lives but entire communities. I'm a recognized writer, speaker, and advocate for proactive health practices, and I frequently conduct workshops aimed at improving quality of life and empowering people to take charge of their health for the long term.</p>
-            </div>
-            <div class="provider-section">
-              <h4>What I help with</h4>
-              <ul>
-                <li>Injury rehabilitation and return to movement</li>
-                <li>Building sustainable exercise habits</li>
-                <li>Preventive health and lifestyle optimization</li>
-                <li>Movement strategies for healthy aging</li>
-              </ul>
+            <div class="provider-expanded">
+              <div class="provider-expanded-photo">
+                <img src="images/Dr-Sourabh-Sane.jpg" alt="Dr. Sourabh Sane">
+              </div>
+              <div class="provider-expanded-body">
+                <h3 class="provider-expanded-name">Dr. Sourabh Sane</h3>
+                <p class="provider-expanded-subtitle">Physiotherapy & Lifestyle Coaching</p>
+                <p class="provider-affiliation">Physiotherapist & Lifestyle Coach · Pune</p>
+                <div class="provider-section">
+                  <h4>About</h4>
+                  <p>I'm a professional physiotherapist and lifestyle coach dedicated to helping individuals and communities achieve optimal health at every stage of life. With extensive experience in sports rehabilitation and preventive health, I specialize in coaching people through science-based lifestyle changes that promote longevity, vitality, and resilience. I believe that integrating preventive and corrective techniques into daily routines can transform not just individual lives but entire communities. I'm a recognized writer, speaker, and advocate for proactive health practices, and I frequently conduct workshops aimed at improving quality of life and empowering people to take charge of their health for the long term.</p>
+                </div>
+                <div class="provider-section">
+                  <h4>What I help with</h4>
+                  <ul>
+                    <li>Injury rehabilitation and return to movement</li>
+                    <li>Building sustainable exercise habits</li>
+                    <li>Preventive health and lifestyle optimization</li>
+                    <li>Movement strategies for healthy aging</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <a href="#" class="provider-cta" data-provider="Dr. Sourabh Sane" onclick="return false">
+          <button class="provider-cta" data-provider="Dr. Sourabh Sane">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -183,8 +215,8 @@
       
       <div class="provider-cards">
         <div class="provider-card">
-          <button class="provider-header">
-            <div class="provider-avatar"><span>AT</span></div>
+          <button class="provider-header" aria-expanded="false">
+            <div class="provider-avatar"><img src="images/andrew-talansky.jpg" alt="Andrew Talansky"></div>
             <div class="provider-info">
               <div class="provider-name-row">
                 <span class="provider-flag">🇺🇸</span>
@@ -195,25 +227,76 @@
             <svg class="provider-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="provider-content">
-            <p class="provider-affiliation">GM of Endurance Sport, Eternal</p>
-            <div class="provider-section">
-              <h4>About</h4>
-              <p>I'm a former Tour de France cyclist and professional triathlete — I built my career on grit and versatility across the world's most demanding endurance events. After retiring from professional sport, I moved into consulting, helping elite athletes and organizations apply high-performance principles beyond the field. Today, I serve as GM of Endurance Sport at Eternal, a performance healthcare company that blends performance medicine with concierge care to support active individuals in living life on their terms, to the very end.</p>
-            </div>
-            <div class="provider-section">
-              <h4>What I help with</h4>
-              <ul>
-                <li>Training design and periodization for endurance athletes</li>
-                <li>Performance optimization and recovery strategies</li>
-                <li>Transitioning between competitive and lifelong fitness</li>
-                <li>Applying high-performance principles to everyday health</li>
-              </ul>
+            <div class="provider-expanded">
+              <div class="provider-expanded-photo">
+                <img src="images/andrew-talansky.jpg" alt="Andrew Talansky">
+              </div>
+              <div class="provider-expanded-body">
+                <h3 class="provider-expanded-name">Andrew Talansky</h3>
+                <p class="provider-expanded-subtitle">Performance Coach & Former Professional Cyclist</p>
+                <p class="provider-affiliation">GM of Endurance Sport, Eternal</p>
+                <div class="provider-section">
+                  <h4>About</h4>
+                  <p>I'm a former Tour de France cyclist and professional triathlete — I built my career on grit and versatility across the world's most demanding endurance events. After retiring from professional sport, I moved into consulting, helping elite athletes and organizations apply high-performance principles beyond the field. Today, I serve as GM of Endurance Sport at Eternal, a performance healthcare company that blends performance medicine with concierge care to support active individuals in living life on their terms, to the very end.</p>
+                </div>
+                <div class="provider-section">
+                  <h4>What I help with</h4>
+                  <ul>
+                    <li>Training design and periodization for endurance athletes</li>
+                    <li>Performance optimization and recovery strategies</li>
+                    <li>Transitioning between competitive and lifelong fitness</li>
+                    <li>Applying high-performance principles to everyday health</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <a href="#" class="provider-cta" data-provider="Andrew Talansky" onclick="return false">
+          <button class="provider-cta" data-provider="Andrew Talansky">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
+          </button>
+        </div>
+
+        <div class="provider-card">
+          <button class="provider-header" aria-expanded="false">
+            <div class="provider-avatar"><img src="images/dr-ali-zaidi.jpg" alt="Dr. Ali Zaidi"></div>
+            <div class="provider-info">
+              <div class="provider-name-row">
+                <span class="provider-flag">🇺🇸</span>
+                <span class="provider-name">Dr. Ali Zaidi</span>
+              </div>
+              <span class="provider-subtitle">Longevity & Preventive Medicine</span>
+            </div>
+            <svg class="provider-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="provider-content">
+            <div class="provider-expanded">
+              <div class="provider-expanded-photo">
+                <img src="images/dr-ali-zaidi.jpg" alt="Dr. Ali Zaidi">
+              </div>
+              <div class="provider-expanded-body">
+                <h3 class="provider-expanded-name">Dr. Ali Zaidi</h3>
+                <p class="provider-expanded-subtitle">Longevity & Preventive Medicine</p>
+                <p class="provider-affiliation">Stanford, UCSF & Penn-trained Physician</p>
+                <div class="provider-section">
+                  <h4>About</h4>
+                  <p>I am passionate about using science and evidence to prevent chronic disease and help you live your best life. For me, optimizing health is not only a passion, it is personal. As a South Asian, I am at increased risk for diabetes, heart disease, and stroke which all run in my family. I took care of my father who suffered from dementia and saw the impact on him and my family. I am doing what I can to prevent these chronic diseases in myself and I want to share my learnings with you. I am a Stanford, UCSF, and Penn trained physician. For the past decade, I have been studying longevity and how we can use lifestyle changes to improve our health. Now, I want to help you thrive.</p>
+                </div>
+                <div class="provider-section">
+                  <h4>What I help with</h4>
+                  <ul>
+                    <li>Preventing chronic disease before it starts: diabetes, heart disease, stroke, and dementia</li>
+                    <li>Longevity and lifestyle medicine: evidence-based nutrition, movement, and habit changes</li>
+                    <li>Personalized guidance for South Asians and those with family history of chronic illness</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="provider-cta" data-provider="Dr. Ali Zaidi">
+            Book a Consultation
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -225,8 +308,8 @@
       
       <div class="provider-cards">
         <div class="provider-card">
-          <button class="provider-header">
-            <div class="provider-avatar"><span>KR</span></div>
+          <button class="provider-header" aria-expanded="false">
+            <div class="provider-avatar"><img src="images/Dr-Kalpana-Raval.jpg" alt="Dr. Kalpana Raval"></div>
             <div class="provider-info">
               <div class="provider-name-row">
                 <span class="provider-flag">🇮🇳</span>
@@ -237,30 +320,39 @@
             <svg class="provider-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="provider-content">
-            <p class="provider-affiliation">Consultant Psychiatrist · Pune</p>
-            <div class="provider-section">
-              <h4>About</h4>
-              <p>I'm a consultant psychiatrist and psychotherapist based in Pune. I completed my MBBS and postgraduate studies in psychiatry from BJ Medical College, ranking first in Pune University's DPM exams. I worked in geriatric psychiatry and research in Wales, UK, before returning to Pune in 2008. I practice at Surya Hospital and Sahyadri Hospitals, serve as visiting faculty at several colleges, and am currently the President-elect of the Indian Psychiatric Society's Pune branch.</p>
-            </div>
-            <div class="provider-section">
-              <h4>What I help with</h4>
-              <ul>
-                <li>Anxiety, depression, and stress management</li>
-                <li>Life transitions and emotional wellbeing</li>
-                <li>Geriatric mental health</li>
-                <li>Psychotherapy and long-term mental wellness</li>
-              </ul>
+            <div class="provider-expanded">
+              <div class="provider-expanded-photo">
+                <img src="images/Dr-Kalpana-Raval.jpg" alt="Dr. Kalpana Raval">
+              </div>
+              <div class="provider-expanded-body">
+                <h3 class="provider-expanded-name">Dr. Kalpana Raval</h3>
+                <p class="provider-expanded-subtitle">Psychiatry & Psychotherapy</p>
+                <p class="provider-affiliation">Consultant Psychiatrist · Pune</p>
+                <div class="provider-section">
+                  <h4>About</h4>
+                  <p>I'm a consultant psychiatrist and psychotherapist based in Pune. I completed my MBBS and postgraduate studies in psychiatry from BJ Medical College, ranking first in Pune University's DPM exams. I worked in geriatric psychiatry and research in Wales, UK, before returning to Pune in 2008. I practice at Surya Hospital and Sahyadri Hospitals, serve as visiting faculty at several colleges, and am currently the President-elect of the Indian Psychiatric Society's Pune branch.</p>
+                </div>
+                <div class="provider-section">
+                  <h4>What I help with</h4>
+                  <ul>
+                    <li>Anxiety, depression, and stress management</li>
+                    <li>Life transitions and emotional wellbeing</li>
+                    <li>Geriatric mental health</li>
+                    <li>Psychotherapy and long-term mental wellness</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <a href="#" class="provider-cta" data-provider="Dr. Kalpana Raval" onclick="return false">
+          <button class="provider-cta" data-provider="Dr. Kalpana Raval">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
+          </button>
         </div>
 
         <div class="provider-card">
-          <button class="provider-header">
-            <div class="provider-avatar"><span>NR</span></div>
+          <button class="provider-header" aria-expanded="false">
+            <div class="provider-avatar"><img src="images/Dr-Nischol-Raval.jpg" alt="Dr. Nischol Raval"></div>
             <div class="provider-info">
               <div class="provider-name-row">
                 <span class="provider-flag">🇮🇳</span>
@@ -271,25 +363,34 @@
             <svg class="provider-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="provider-content">
-            <p class="provider-affiliation">Consultant Psychiatrist · Pune</p>
-            <div class="provider-section">
-              <h4>About</h4>
-              <p>I'm a consultant psychiatrist and psychotherapist based in Pune. I graduated as a gold medalist in Biochemistry and ranked first in Psychiatry at B.J. Medical College in 1999, where I later served as Lecturer. Early in my career, I contributed to post-earthquake mental health relief in Gujarat, earning government recognition, and organized a mental health symposium at the Indian Science Congress. From 2003 to 2011, I trained and practiced within the UK's NHS, gaining expertise in psychotherapy, neuropsychiatric rehabilitation, and liaison psychiatry. Since returning to Pune, I've worked at Sahyadri Hospitals, taught nursing students, and supported NGOs focused on HIV and LGBTQ mental health. My current interests include stress, mind-body medicine, and sexual health.</p>
-            </div>
-            <div class="provider-section">
-              <h4>What I help with</h4>
-              <ul>
-                <li>Stress management and mind-body approaches</li>
-                <li>Psychotherapy and neuropsychiatric concerns</li>
-                <li>Sexual health and wellbeing</li>
-                <li>LGBTQ-affirming mental health support</li>
-              </ul>
+            <div class="provider-expanded">
+              <div class="provider-expanded-photo">
+                <img src="images/Dr-Nischol-Raval.jpg" alt="Dr. Nischol Raval">
+              </div>
+              <div class="provider-expanded-body">
+                <h3 class="provider-expanded-name">Dr. Nischol Raval</h3>
+                <p class="provider-expanded-subtitle">Psychiatry, Psychotherapy & Mind-Body Medicine</p>
+                <p class="provider-affiliation">Consultant Psychiatrist · Pune</p>
+                <div class="provider-section">
+                  <h4>About</h4>
+                  <p>I'm a consultant psychiatrist and psychotherapist based in Pune. I graduated as a gold medalist in Biochemistry and ranked first in Psychiatry at B.J. Medical College in 1999, where I later served as Lecturer. Early in my career, I contributed to post-earthquake mental health relief in Gujarat, earning government recognition, and organized a mental health symposium at the Indian Science Congress. From 2003 to 2011, I trained and practiced within the UK's NHS, gaining expertise in psychotherapy, neuropsychiatric rehabilitation, and liaison psychiatry. Since returning to Pune, I've worked at Sahyadri Hospitals, taught nursing students, and supported NGOs focused on HIV and LGBTQ mental health. My current interests include stress, mind-body medicine, and sexual health.</p>
+                </div>
+                <div class="provider-section">
+                  <h4>What I help with</h4>
+                  <ul>
+                    <li>Stress management and mind-body approaches</li>
+                    <li>Psychotherapy and neuropsychiatric concerns</li>
+                    <li>Sexual health and wellbeing</li>
+                    <li>LGBTQ-affirming mental health support</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <a href="#" class="provider-cta" data-provider="Dr. Nischol Raval" onclick="return false">
+          <button class="provider-cta" data-provider="Dr. Nischol Raval">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -301,8 +402,8 @@
       
       <div class="provider-cards">
         <div class="provider-card">
-          <button class="provider-header">
-            <div class="provider-avatar"><span>MP</span></div>
+          <button class="provider-header" aria-expanded="false">
+            <div class="provider-avatar"><img src="images/Dr-Mugdha-Parasnis.jpg" alt="Dr. Mugdha Parasnis"></div>
             <div class="provider-info">
               <div class="provider-name-row">
                 <span class="provider-flag">🇮🇳</span>
@@ -313,25 +414,34 @@
             <svg class="provider-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="provider-content">
-            <p class="provider-affiliation">Head of IVF/ART, KEM Hospital · Pune</p>
-            <div class="provider-section">
-              <h4>About</h4>
-              <p>I'm an experienced gynecologist and the Head of IVF/ART at KEM Hospital, Pune, where I also serve as a Consultant in Obstetrics & Gynaecology. I hold a DGO and DNB in Ob-Gyn and received advanced training in infertility and IVF under Dr. Prakash Trivedi in Mumbai and Dr. Purnima Nadkarni in Gujarat. My expertise spans IVF/ICSI, recurrent IVF failures, poor ovarian response, male infertility, and ultrasound-guided diagnostic and interventional procedures. I'm known for my compassionate, evidence-based approach to helping couples navigate the path to parenthood.</p>
-            </div>
-            <div class="provider-section">
-              <h4>What I help with</h4>
-              <ul>
-                <li>Fertility planning and reproductive health</li>
-                <li>IVF guidance and recurrent IVF challenges</li>
-                <li>High-risk obstetrics</li>
-                <li>Reproductive decision-making and second opinions</li>
-              </ul>
+            <div class="provider-expanded">
+              <div class="provider-expanded-photo">
+                <img src="images/Dr-Mugdha-Parasnis.jpg" alt="Dr. Mugdha Parasnis">
+              </div>
+              <div class="provider-expanded-body">
+                <h3 class="provider-expanded-name">Dr. Mugdha Parasnis</h3>
+                <p class="provider-expanded-subtitle">Gynecology, IVF & Reproductive Health</p>
+                <p class="provider-affiliation">Head of IVF/ART, KEM Hospital · Pune</p>
+                <div class="provider-section">
+                  <h4>About</h4>
+                  <p>I'm an experienced gynecologist and the Head of IVF/ART at KEM Hospital, Pune, where I also serve as a Consultant in Obstetrics & Gynaecology. I hold a DGO and DNB in Ob-Gyn and received advanced training in infertility and IVF under Dr. Prakash Trivedi in Mumbai and Dr. Purnima Nadkarni in Gujarat. My expertise spans IVF/ICSI, recurrent IVF failures, poor ovarian response, male infertility, and ultrasound-guided diagnostic and interventional procedures. I'm known for my compassionate, evidence-based approach to helping couples navigate the path to parenthood.</p>
+                </div>
+                <div class="provider-section">
+                  <h4>What I help with</h4>
+                  <ul>
+                    <li>Fertility planning and reproductive health</li>
+                    <li>IVF guidance and recurrent IVF challenges</li>
+                    <li>High-risk obstetrics</li>
+                    <li>Reproductive decision-making and second opinions</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <a href="#" class="provider-cta" data-provider="Dr. Mugdha Parasnis" onclick="return false">
+          <button class="provider-cta" data-provider="Dr. Mugdha Parasnis">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -343,8 +453,8 @@
       
       <div class="provider-cards">
         <div class="provider-card">
-          <button class="provider-header">
-            <div class="provider-avatar"><span>SP</span></div>
+          <button class="provider-header" aria-expanded="false">
+            <div class="provider-avatar"><img src="images/dr-sanat-phatak.jpg" alt="Dr. Sanat Phatak"></div>
             <div class="provider-info">
               <div class="provider-name-row">
                 <span class="provider-flag">🇮🇳</span>
@@ -355,30 +465,39 @@
             <svg class="provider-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="provider-content">
-            <p class="provider-affiliation">Rheumatologist & Clinical Researcher · Pune</p>
-            <div class="provider-section">
-              <h4>About</h4>
-              <p>I'm a rheumatologist and clinical researcher based in Pune. My clinical work spans the spectrum of systemic autoimmune disease and musculoskeletal conditions in both children and adults. My research focuses on the interface of metabolism and inflammation-fibrosis pathways, and more recently, the use of artificial intelligence to support diagnosis of inflammatory disease in resource-limited settings. I'm supported by the DBT/Wellcome India Alliance and collaborate with IISER Pune and Duke University.</p>
-            </div>
-            <div class="provider-section">
-              <h4>What I help with</h4>
-              <ul>
-                <li>Autoimmune conditions (lupus, rheumatoid arthritis, vasculitis)</li>
-                <li>Chronic joint pain and inflammatory disease</li>
-                <li>Understanding your immune landscape</li>
-                <li>Navigating complex or unresolved diagnoses</li>
-              </ul>
+            <div class="provider-expanded">
+              <div class="provider-expanded-photo">
+                <img src="images/dr-sanat-phatak.jpg" alt="Dr. Sanat Phatak">
+              </div>
+              <div class="provider-expanded-body">
+                <h3 class="provider-expanded-name">Dr. Sanat Phatak</h3>
+                <p class="provider-expanded-subtitle">Rheumatology & Autoimmune Disease</p>
+                <p class="provider-affiliation">Rheumatologist & Clinical Researcher · Pune</p>
+                <div class="provider-section">
+                  <h4>About</h4>
+                  <p>I'm a rheumatologist and clinical researcher based in Pune. My clinical work spans the spectrum of systemic autoimmune disease and musculoskeletal conditions in both children and adults. My research focuses on the interface of metabolism and inflammation-fibrosis pathways, and more recently, the use of artificial intelligence to support diagnosis of inflammatory disease in resource-limited settings. I'm supported by the DBT/Wellcome India Alliance and collaborate with IISER Pune and Duke University.</p>
+                </div>
+                <div class="provider-section">
+                  <h4>What I help with</h4>
+                  <ul>
+                    <li>Autoimmune conditions (lupus, rheumatoid arthritis, vasculitis)</li>
+                    <li>Chronic joint pain and inflammatory disease</li>
+                    <li>Understanding your immune landscape</li>
+                    <li>Navigating complex or unresolved diagnoses</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <a href="#" class="provider-cta" data-provider="Dr. Sanat Phatak" onclick="return false">
+          <button class="provider-cta" data-provider="Dr. Sanat Phatak">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
+          </button>
         </div>
 
         <div class="provider-card">
-          <button class="provider-header">
-            <div class="provider-avatar"><span>MB</span></div>
+          <button class="provider-header" aria-expanded="false">
+            <div class="provider-avatar"><img src="images/dr-Meetali-Bidaye.jpg" alt="Dr. Meetali Bidaye"></div>
             <div class="provider-info">
               <div class="provider-name-row">
                 <span class="provider-flag">🇮🇳</span>
@@ -389,25 +508,34 @@
             <svg class="provider-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="provider-content">
-            <p class="provider-affiliation">UK-trained Nephrologist · Pune | Founder, Nivarak & I-SHARE Foundation</p>
-            <div class="provider-section">
-              <h4>About</h4>
-              <p>I'm a UK-trained nephrologist with over 13 years of experience as a Consultant Nephrologist in Pune. After completing my specialist training in Nephrology in England, I returned to India to bring global best practices to local care. I founded Nivarak, a preventive eldercare startup focused on proactive, coordinated health support for seniors, and co-founded the I-SHARE Foundation, an NGO dedicated to improving access to medical care for underserved communities. Outside of medicine, I'm an avid tennis player and a passionate dog lover — I often say that dogs are truly a gift to humanity.</p>
-            </div>
-            <div class="provider-section">
-              <h4>What I help with</h4>
-              <ul>
-                <li>Kidney health and chronic kidney disease management</li>
-                <li>Preventive health strategies for aging well</li>
-                <li>Coordinated care planning for seniors</li>
-                <li>Second opinions on nephrology concerns</li>
-              </ul>
+            <div class="provider-expanded">
+              <div class="provider-expanded-photo">
+                <img src="images/dr-Meetali-Bidaye.jpg" alt="Dr. Meetali Bidaye">
+              </div>
+              <div class="provider-expanded-body">
+                <h3 class="provider-expanded-name">Dr. Meetali Bidaye</h3>
+                <p class="provider-expanded-subtitle">Nephrology & Preventive Eldercare</p>
+                <p class="provider-affiliation">UK-trained Nephrologist · Pune | Founder, Nivarak & I-SHARE Foundation</p>
+                <div class="provider-section">
+                  <h4>About</h4>
+                  <p>I'm a UK-trained nephrologist with over 13 years of experience as a Consultant Nephrologist in Pune. After completing my specialist training in Nephrology in England, I returned to India to bring global best practices to local care. I founded Nivarak, a preventive eldercare startup focused on proactive, coordinated health support for seniors, and co-founded the I-SHARE Foundation, an NGO dedicated to improving access to medical care for underserved communities. Outside of medicine, I'm an avid tennis player and a passionate dog lover — I often say that dogs are truly a gift to humanity.</p>
+                </div>
+                <div class="provider-section">
+                  <h4>What I help with</h4>
+                  <ul>
+                    <li>Kidney health and chronic kidney disease management</li>
+                    <li>Preventive health strategies for aging well</li>
+                    <li>Coordinated care planning for seniors</li>
+                    <li>Second opinions on nephrology concerns</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <a href="#" class="provider-cta" data-provider="Dr. Meetali Bidaye" onclick="return false">
+          <button class="provider-cta" data-provider="Dr. Meetali Bidaye">
             Book a Consultation
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -469,10 +597,10 @@
       </div>
 
       <!-- Thank You State -->
-      <div id="modal-thanks-state" style="display: none;">
+      <div id="modal-thanks-state" class="hidden">
         <div class="modal-thanks">
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="var(--primary)" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <h2 class="modal-title" style="margin-top: 1.5rem;">Thank You!</h2>
+          <h2 class="modal-title mt-section">Thank You!</h2>
           <p class="modal-subtitle">Thank you for your interest. We'll confirm your booking within 24 hours.</p>
           <button class="btn btn-outline modal-done" id="modal-done">Done</button>
         </div>
@@ -483,10 +611,74 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>© 2026 The Longevity Circle | Powered by PreventiveHealth.AI</p>
+      <p>© 2026 The Longevity Circle | Powered by <a href="https://preventivehealth.ai" target="_blank" rel="noopener">PreventiveHealth.AI</a></p>
     </div>
   </footer>
 
-  <script src="script.js?v=20260227"></script>
+  <!-- Feedback Widget -->
+  <button class="feedback-fab" id="feedback-fab" aria-label="Give feedback">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+    </svg>
+    Give Feedback
+  </button>
+
+  <div class="feedback-panel" id="feedback-panel">
+    <div class="feedback-panel-header">
+      <h3>Give Feedback</h3>
+      <button class="feedback-panel-close" id="feedback-close" aria-label="Close feedback">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="feedback-form-state">
+      <p class="feedback-panel-subtitle">Help us improve. Your feedback remains anonymous.</p>
+      <form id="feedback-form" action="https://formspree.io/f/meelnrrw" method="POST">
+        <input type="hidden" name="_subject" value="Feedback — The Longevity Circle">
+        <input type="hidden" id="feedback-location-hidden" name="location" value="">
+        <input type="hidden" id="feedback-age-hidden" name="age_range" value="">
+        <div class="form-group">
+          <label for="feedback-message">Your Feedback</label>
+          <textarea id="feedback-message" name="feedback" rows="4" placeholder="How can we improve?" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <div class="toggle-group" id="feedback-location-toggle">
+            <button type="button" class="toggle-btn" data-value="US">U.S.</button>
+            <button type="button" class="toggle-btn" data-value="India">India</button>
+            <button type="button" class="toggle-btn" data-value="Other">Other</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Age</label>
+          <div class="toggle-group" id="feedback-age-toggle">
+            <button type="button" class="toggle-btn" data-value="18-34">18–34</button>
+            <button type="button" class="toggle-btn" data-value="35-54">35–54</button>
+            <button type="button" class="toggle-btn" data-value="55+">55+</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="feedback-email">Email <span class="form-optional">(optional)</span></label>
+          <input type="email" id="feedback-email" name="email" placeholder="your@email.com">
+        </div>
+        <button type="submit" class="btn btn-primary feedback-submit">Send Feedback</button>
+      </form>
+    </div>
+
+    <div id="feedback-thanks-state" class="hidden">
+      <div class="feedback-thanks">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="var(--primary)" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <h3>Thank you!</h3>
+        <p>Your feedback helps us build something better.</p>
+        <button class="btn btn-outline feedback-done" id="feedback-done">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js?v=20260228"></script>
 </body>
 </html>

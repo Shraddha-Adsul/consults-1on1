@@ -1,36 +1,46 @@
-// Mobile menu toggle
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobile-menu');
+// Mobile menu toggle — attached via JS instead of inline onclick
+(function() {
   const hamburger = document.getElementById('hamburger');
-  const isOpen = menu.classList.contains('open');
-  
-  menu.classList.toggle('open');
-  hamburger.innerHTML = isOpen 
-    ? '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>'
-    : '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
-}
+  const menu = document.getElementById('mobile-menu');
+  if (!hamburger || !menu) return;
 
+  const ICON_OPEN = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>';
+  const ICON_CLOSE = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
 
-// Close mobile menu when clicking a link
-document.querySelectorAll('.mobile-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('mobile-menu').classList.remove('open');
-    document.getElementById('hamburger').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>';
+  function toggleMobileMenu() {
+    const isOpen = menu.classList.contains('open');
+    menu.classList.toggle('open');
+    hamburger.innerHTML = isOpen ? ICON_OPEN : ICON_CLOSE;
+  }
+
+  hamburger.addEventListener('click', toggleMobileMenu);
+
+  // Close mobile menu when clicking a link
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      hamburger.innerHTML = ICON_OPEN;
+    });
   });
-});
+})();
 
-// Provider card accordion
+// Provider card accordion with aria-expanded
 document.querySelectorAll('.provider-header').forEach(header => {
   header.addEventListener('click', () => {
     const card = header.closest('.provider-card');
     const wasOpen = card.classList.contains('open');
-    
-    // Close all cards
-    document.querySelectorAll('.provider-card').forEach(c => c.classList.remove('open'));
-    
+
+    // Close all cards and reset aria
+    document.querySelectorAll('.provider-card').forEach(c => {
+      c.classList.remove('open');
+      const h = c.querySelector('.provider-header');
+      if (h) h.setAttribute('aria-expanded', 'false');
+    });
+
     // Open clicked card if it wasn't already open
     if (!wasOpen) {
       card.classList.add('open');
+      header.setAttribute('aria-expanded', 'true');
     }
   });
 });
@@ -52,19 +62,6 @@ document.querySelectorAll('.pill').forEach(pill => {
       const offset = (nav ? nav.offsetHeight : 0) + 24;
       const top = targetSection.getBoundingClientRect().top + window.pageYOffset - offset;
       window.scrollTo({ top, behavior: 'smooth' });
-
-      // Highlight the target section with a bop after scroll settles
-      setTimeout(() => {
-        // Remove any existing highlights
-        document.querySelectorAll('.concern-section.highlighted').forEach(s => s.classList.remove('highlighted'));
-        // Force reflow so re-adding the class restarts the animation
-        void targetSection.offsetWidth;
-        targetSection.classList.add('highlighted');
-        // Clean up after animation completes
-        targetSection.addEventListener('animationend', () => {
-          targetSection.classList.remove('highlighted');
-        }, { once: true });
-      }, 400);
     }
   });
 });
@@ -73,18 +70,18 @@ document.querySelectorAll('.pill').forEach(pill => {
 function updateActivePill() {
   const sections = document.querySelectorAll('.concern-section');
   const pills = document.querySelectorAll('.pill');
-  
+
   if (sections.length === 0) return;
-  
+
   let currentSection = sections[0].id;
-  
+
   sections.forEach(section => {
     const rect = section.getBoundingClientRect();
     if (rect.top <= 180) {
       currentSection = section.id;
     }
   });
-  
+
   pills.forEach(pill => {
     pill.classList.toggle('active', pill.getAttribute('data-target') === currentSection);
   });
@@ -101,9 +98,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
     if (href === '#') return;
-    // Skip provider-cta links (handled by modal)
-    if (this.classList.contains('provider-cta')) return;
-    
+
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) {
@@ -148,8 +143,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   function openModal(providerName) {
     providerNameEl.textContent = providerName;
     formProviderInput.value = providerName;
-    formState.style.display = '';
-    thanksState.style.display = 'none';
+    formState.classList.remove('hidden');
+    thanksState.classList.add('hidden');
     form.reset();
     formProviderInput.value = providerName;
     locationHidden.value = '';
@@ -208,7 +203,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
     const submitBtn = form.querySelector('.modal-submit');
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Submitting…';
+    submitBtn.textContent = 'Submitting\u2026';
 
     const formData = new FormData(form);
 
@@ -220,8 +215,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       });
 
       if (response.ok) {
-        formState.style.display = 'none';
-        thanksState.style.display = '';
+        formState.classList.add('hidden');
+        thanksState.classList.remove('hidden');
       } else {
         alert('Something went wrong. Please try again.');
       }
@@ -234,29 +229,35 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 })();
 
-// Feedback Widget
-function toggleFeedback() {
+// Feedback Widget — attached via JS instead of inline onclick
+(function() {
   const fab = document.getElementById('feedback-fab');
   const panel = document.getElementById('feedback-panel');
+  const closeBtn = document.getElementById('feedback-close');
+  const doneBtn = document.getElementById('feedback-done');
   if (!fab || !panel) return;
 
-  const isOpen = panel.classList.contains('open');
-  if (isOpen) {
-    panel.classList.remove('open');
-    fab.classList.remove('hidden');
-    // Reset to form state when closing
-    const formState = document.getElementById('feedback-form-state');
-    const thanksState = document.getElementById('feedback-thanks-state');
-    if (formState) formState.style.display = '';
-    if (thanksState) thanksState.style.display = 'none';
-  } else {
-    panel.classList.add('open');
-    fab.classList.add('hidden');
+  function toggleFeedback() {
+    const isOpen = panel.classList.contains('open');
+    if (isOpen) {
+      panel.classList.remove('open');
+      fab.classList.remove('hidden');
+      // Reset to form state when closing
+      const formState = document.getElementById('feedback-form-state');
+      const thanksState = document.getElementById('feedback-thanks-state');
+      if (formState) formState.classList.remove('hidden');
+      if (thanksState) thanksState.classList.add('hidden');
+    } else {
+      panel.classList.add('open');
+      fab.classList.add('hidden');
+    }
   }
-}
 
-// Feedback toggle buttons & form submission
-(function() {
+  fab.addEventListener('click', toggleFeedback);
+  if (closeBtn) closeBtn.addEventListener('click', toggleFeedback);
+  if (doneBtn) doneBtn.addEventListener('click', toggleFeedback);
+
+  // Feedback form submission
   const form = document.getElementById('feedback-form');
   if (!form) return;
 
@@ -292,7 +293,7 @@ function toggleFeedback() {
 
     const submitBtn = form.querySelector('.feedback-submit');
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
+    submitBtn.textContent = 'Sending\u2026';
 
     const formData = new FormData(form);
 
@@ -304,8 +305,8 @@ function toggleFeedback() {
       });
 
       if (response.ok) {
-        document.getElementById('feedback-form-state').style.display = 'none';
-        document.getElementById('feedback-thanks-state').style.display = '';
+        document.getElementById('feedback-form-state').classList.add('hidden');
+        document.getElementById('feedback-thanks-state').classList.remove('hidden');
         form.reset();
         locationHidden.value = '';
         ageHidden.value = '';

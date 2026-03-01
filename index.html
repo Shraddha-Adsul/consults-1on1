@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Longevity Circle — One-on-One Doctor Consultations</title>
   <meta name="description" content="Private, one-on-one consultations with physicians who make time to actually listen.">
-  <link rel="stylesheet" href="styles.css?v=20260227">
+  <link rel="stylesheet" href="styles.css?v=20260228">
 </head>
 <body>
   <!-- Navigation -->
@@ -17,7 +17,7 @@
         <a href="providers.html" class="nav-link">Our Providers</a>
         <a href="prepare.html" class="nav-link">How to Prepare</a>
       </div>
-      <button class="nav-hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -76,20 +76,20 @@
         <div class="step">
           <span class="step-number">1</span>
           <h3>Find your provider</h3>
-          <p>Browse our curated list of providers organized by health concern. Every physician in our network was hand-picked for their clinical expertise and their commitment to thoughtful, patient-centered care.</p>
+          <p>Browse our curated list of providers organized by health concern. Every physician was hand-picked for their clinical expertise and commitment to thoughtful, patient-centered care.</p>
         </div>
         <div class="step">
           <span class="step-number">2</span>
-          <h3>Book a session</h3>
-          <p>Select a consultation length that fits your needs — 15, 30, or 60 minutes — and pick a time that works for your schedule. Booking is quick and straightforward.</p>
+          <h3>Express interest</h3>
+          <p>Select a provider. Expressing interest is quick and straightforward. Once you send us your details, we'll reach out with a payment link and coordinate available times to book your consultation.</p>
         </div>
         <div class="step">
           <span class="step-number">3</span>
           <h3>Have the conversation</h3>
-          <p>Join your session with your questions ready. Our providers are here to listen carefully, offer clear guidance, and help you leave with a real understanding of your next steps.</p>
+          <p>Once payment is confirmed, we'll book your session. Join the call with your questions ready — our providers are here to listen carefully, offer clear guidance, and help you leave with a real understanding of your next steps.</p>
         </div>
       </div>
-      <div style="margin-top: 3rem;">
+      <div>
         <a href="providers.html" class="btn btn-primary">Browse Providers</a>
       </div>
     </div>
@@ -114,8 +114,8 @@
       <h2>About The Longevity Circle</h2>
       <p>This offering is brought to you by The Longevity Circle — a community built on the belief that access to credible, trustworthy health guidance shouldn't depend on who you know or what you can afford.</p>
       <p>In our community, members get ongoing access to expert-informed conversations, evidence-based perspectives, and peer support. These consultations are an extension of that same commitment.</p>
-      <div style="margin-top: 2rem;">
-        <a href="#" class="btn btn-outline">
+      <div>
+        <a href="https://chat.whatsapp.com/GaY7bIwbTiA6lWj6xlMTTW" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
           Join the Circle
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
@@ -184,21 +184,22 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>© 2026 The Longevity Circle | Powered by PreventiveHealth.AI</p>
+      <p>© 2026 The Longevity Circle | Powered by <a href="https://preventivehealth.ai" target="_blank" rel="noopener">PreventiveHealth.AI</a></p>
     </div>
   </footer>
 
   <!-- Feedback Widget -->
-  <div class="feedback-fab" id="feedback-fab" onclick="toggleFeedback()">
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <button class="feedback-fab" id="feedback-fab" aria-label="Give feedback">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
     </svg>
-  </div>
+    Give Feedback
+  </button>
 
   <div class="feedback-panel" id="feedback-panel">
     <div class="feedback-panel-header">
       <h3>Give Feedback</h3>
-      <button class="feedback-panel-close" id="feedback-close" onclick="toggleFeedback()" aria-label="Close feedback">
+      <button class="feedback-panel-close" id="feedback-close" aria-label="Close feedback">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
@@ -241,18 +242,18 @@
     </div>
 
     <!-- Thank-you state -->
-    <div id="feedback-thanks-state" style="display: none;">
+    <div id="feedback-thanks-state" class="hidden">
       <div class="feedback-thanks">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="var(--primary)" stroke-width="1.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
         <h3>Thank you!</h3>
         <p>Your feedback helps us build something better.</p>
-        <button class="btn btn-outline feedback-done" onclick="toggleFeedback()">Close</button>
+        <button class="btn btn-outline feedback-done" id="feedback-done">Close</button>
       </div>
     </div>
   </div>
 
-  <script src="script.js?v=20260227"></script>
+  <script src="script.js?v=20260228"></script>
 </body>
 </html>
