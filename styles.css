@@ -1286,6 +1286,14 @@ ul {
   cursor: pointer;
 }
 
+.pricing-hint {
+  font-size: 0.8125rem;
+  color: var(--primary);
+  margin-top: 0.625rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
 .modal-thanks {
   text-align: center;
   padding: 1rem 0;

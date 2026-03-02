@@ -121,6 +121,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   const doneBtn = document.getElementById('modal-done');
   const locationHidden = document.getElementById('form-location-hidden');
   const durationHidden = document.getElementById('form-duration-hidden');
+  const pricingHint = document.getElementById('pricing-hint');
+
+  // Provider location and pricing data
+  let currentProviderLocation = '';
+  const pricing = {
+    US:    { '30 minutes': '$99',    '60 minutes': '$175',   label: 'the U.S.' },
+    India: { '30 minutes': '₹4,000', '60 minutes': '₹7,500', label: 'India' }
+  };
+
+  function updatePricingHint() {
+    const duration = durationHidden.value;
+    const loc = currentProviderLocation;
+    if (duration && loc && pricing[loc]) {
+      const minutes = duration === '30 minutes' ? '30' : '60';
+      pricingHint.textContent = 'This provider is based in ' + pricing[loc].label + '. A ' + minutes + '-minute consultation with them will cost ' + pricing[loc][duration] + '.';
+    } else {
+      pricingHint.textContent = '';
+    }
+  }
 
   // Toggle button groups
   document.querySelectorAll('.toggle-group').forEach(group => {
@@ -135,20 +154,23 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
           locationHidden.value = btn.getAttribute('data-value');
         } else if (group.id === 'duration-toggle') {
           durationHidden.value = btn.getAttribute('data-value');
+          updatePricingHint();
         }
       });
     });
   });
 
-  function openModal(providerName) {
+  function openModal(providerName, providerLocation) {
     providerNameEl.textContent = providerName;
     formProviderInput.value = providerName;
+    currentProviderLocation = providerLocation || '';
     formState.classList.remove('hidden');
     thanksState.classList.add('hidden');
     form.reset();
     formProviderInput.value = providerName;
     locationHidden.value = '';
     durationHidden.value = '';
+    pricingHint.textContent = '';
     // Clear toggle selections
     modal.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('selected'));
     modal.classList.add('open');
@@ -165,8 +187,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const providerName = btn.getAttribute('data-provider');
+      const providerLocation = btn.getAttribute('data-location');
       if (providerName) {
-        openModal(providerName);
+        openModal(providerName, providerLocation);
       }
     });
   });
