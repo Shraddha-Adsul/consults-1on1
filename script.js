@@ -24,23 +24,23 @@
   });
 })();
 
-// Provider card accordion with aria-expanded
-document.querySelectorAll('.provider-header').forEach(header => {
-  header.addEventListener('click', () => {
-    const card = header.closest('.provider-card');
+// Provider card accordion — expand/collapse About section
+document.querySelectorAll('.provider-about-toggle').forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    const card = toggle.closest('.provider-card');
     const wasOpen = card.classList.contains('open');
 
     // Close all cards and reset aria
     document.querySelectorAll('.provider-card').forEach(c => {
       c.classList.remove('open');
-      const h = c.querySelector('.provider-header');
-      if (h) h.setAttribute('aria-expanded', 'false');
+      const t = c.querySelector('.provider-about-toggle');
+      if (t) t.setAttribute('aria-expanded', 'false');
     });
 
     // Open clicked card if it wasn't already open
     if (!wasOpen) {
       card.classList.add('open');
-      header.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-expanded', 'true');
     }
   });
 });
@@ -160,11 +160,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     document.body.style.overflow = '';
   }
 
-  // Open modal when any provider CTA is clicked
-  document.querySelectorAll('.provider-cta').forEach(cta => {
-    cta.addEventListener('click', (e) => {
+  // Open modal when any Book Consult button is clicked
+  document.querySelectorAll('.provider-book-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const providerName = cta.getAttribute('data-provider');
+      const providerName = btn.getAttribute('data-provider');
       if (providerName) {
         openModal(providerName);
       }
