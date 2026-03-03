@@ -160,7 +160,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
   });
 
-  function openModal(providerName, providerLocation) {
+  function openModal(providerName, providerLocation, allowedDurations) {
     providerNameEl.textContent = providerName;
     formProviderInput.value = providerName;
     currentProviderLocation = providerLocation || '';
@@ -173,6 +173,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     pricingHint.textContent = '';
     // Clear toggle selections
     modal.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('selected'));
+
+    // Show/hide duration buttons based on allowed durations
+    const durationGroup = document.getElementById('duration-toggle');
+    durationGroup.querySelectorAll('.toggle-btn').forEach(btn => {
+      if (allowedDurations) {
+        const val = btn.getAttribute('data-value');
+        const allowed = allowedDurations.split(',');
+        const visible = allowed.some(d => val.startsWith(d.trim()));
+        btn.style.display = visible ? '' : 'none';
+      } else {
+        btn.style.display = '';
+      }
+    });
+
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -188,8 +202,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       e.preventDefault();
       const providerName = btn.getAttribute('data-provider');
       const providerLocation = btn.getAttribute('data-location');
+      const allowedDurations = btn.getAttribute('data-durations');
       if (providerName) {
-        openModal(providerName, providerLocation);
+        openModal(providerName, providerLocation, allowedDurations);
       }
     });
   });
