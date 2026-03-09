@@ -295,6 +295,25 @@ ul {
   margin: 0;
 }
 
+/* Pricing Callout — static box above hero CTAs */
+.pricing-callout {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  color: var(--primary);
+  background: rgba(42, 111, 91, 0.06);
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.pricing-callout strong {
+  font-weight: 700;
+}
+
 /* Hero — Full-bleed two-column layout */
 .hero-section {
   background: transparent;
@@ -1307,6 +1326,127 @@ ul {
   margin-top: 0.5rem;
 }
 
+/* ── Testimonials Section ── */
+.container-wide {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.testimonials-section {
+  background: linear-gradient(135deg, rgba(42, 111, 91, 0.06) 0%, rgba(42, 111, 91, 0.02) 100%);
+}
+
+.testimonials-heading {
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+/* Carousel nav bar — left arrow | centered subtitle | right arrow */
+.carousel-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.carousel-nav-subtitle {
+  flex: 1;
+  text-align: center;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.carousel-arrow {
+  width: 40px;
+  height: 36px;
+  min-width: 40px;
+  border-radius: 8px;
+  border: 1.5px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.carousel-arrow:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.testimonials-carousel {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 1%, black 99%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 1%, black 99%, transparent);
+}
+
+.testimonials-track {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0.25rem 0 1rem;
+}
+
+.testimonials-track::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-card {
+  flex: 0 0 340px;
+  scroll-snap-align: start;
+  background: linear-gradient(160deg, #ffffff 0%, #f0f7f4 100%);
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  border-left: 3px solid var(--primary);
+}
+
+.testimonial-quote {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.925rem;
+  line-height: 1.65;
+  color: var(--foreground);
+  margin: 0 0 1.25rem;
+  flex: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border-top: 1px solid rgba(42, 111, 91, 0.15);
+  padding-top: 1rem;
+}
+
+.testimonial-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--foreground);
+}
+
+.testimonial-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
 /* Responsive */
 @media (min-width: 640px) {
   .steps {
@@ -1493,6 +1633,27 @@ ul {
 
   .pricing-card-duration {
     font-size: 1.5rem;
+  }
+
+  /* Testimonials mobile */
+  .testimonial-card {
+    flex: 0 0 280px;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .carousel-nav-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .carousel-arrow {
+    width: 34px;
+    height: 30px;
+    min-width: 34px;
+  }
+
+  .carousel-arrow svg {
+    width: 14px;
+    height: 14px;
   }
 
   /* Feedback panel mobile — full width */

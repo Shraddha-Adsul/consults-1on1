@@ -361,3 +361,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     submitBtn.textContent = 'Send Feedback';
   });
 })();
+
+// Testimonials carousel arrow buttons
+(function() {
+  const track = document.getElementById('testimonials-track');
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+  if (!track || !prevBtn || !nextBtn) return;
+
+  function getScrollAmount() {
+    const card = track.querySelector('.testimonial-card');
+    if (!card) return 340;
+    return card.offsetWidth + 20; // card width + gap
+  }
+
+  nextBtn.addEventListener('click', function() {
+    track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+  });
+
+  prevBtn.addEventListener('click', function() {
+    track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+  });
+})();
